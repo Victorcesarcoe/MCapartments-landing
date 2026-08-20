@@ -1,7 +1,7 @@
 /*
  * DESIGN "Aquarela Carioca" — Landing page single-page:
- * Hero (vídeo) → Anfitrião → Verano Stay (Barra) → Copacabana → Comparativo →
- * Localização (mapas) → Avaliações → FAQ → Rodapé CTA + WhatsApp flutuante.
+ * Hero (vídeo) → Anfitrião → Verano Stay (Barra) → Copacabana → Avaliações →
+ * FAQ → Rodapé CTA + WhatsApp flutuante.
  */
 import { Header, Footer, FloatingWhatsApp } from "@/components/Layout";
 import CoastlineDivider from "@/components/CoastlineDivider";
@@ -30,8 +30,6 @@ export default function Home() {
         <CoastlineDivider color="#eef5f7" strokeColor="#7ba7bc" />
         <ApartmentSection apt={APT2} reversed theme="copa" />
         <CoastlineDivider color="#e8dfd0" strokeColor="#c9b994" />
-        <Compare />
-        <Location />
         <Reviews />
         <Faq />
       </main>

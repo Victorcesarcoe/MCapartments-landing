@@ -10,8 +10,6 @@ import { MessageCircle, Star, ExternalLink } from "lucide-react";
 const NAV = [
   { id: "verano-stay", label: "Barra" },
   { id: "copacabana", label: "Copacabana" },
-  { id: "compare", label: "Comparativo" },
-  { id: "localizacao", label: "Localização" },
   { id: "avaliacoes", label: "Avaliações" },
   { id: "faq", label: "FAQ" },
 ];
