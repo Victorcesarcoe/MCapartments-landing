@@ -125,20 +125,22 @@ export const HOST = {
 
 export const ALL_REVIEWS = [
   // Flat Verano Stay (Barra)
-  { apt: "verano", name: "Hiago", text: "O Flat do Mauricio é perfeito pra quem busca um lugar tranquilo e aconchegante no Rio... prédio muito bem localizado.", rating: 5 },
-  { apt: "verano", name: "Evelyn", text: "Apartamento impecável, roupa de cama de hotel e vista linda. O condomínio tem tudo: piscina, sauna e restaurante.", rating: 5 },
-  { apt: "verano", name: "Davi", text: "A vaga de garagem foi um diferencial enorme pra nós. Check-in na portaria foi simples e rápido.", rating: 5 },
-  { apt: "verano", name: "Lucas", text: "Vista para a Pedra da Gávea no café da manhã não tem preço. Localização ótima, perto do BRT.", rating: 5 },
-  { apt: "verano", name: "Jerusa", text: "Tudo muito limpo e organizado. O Mauricio responde rapidinho e dá ótimas dicas da região.", rating: 5 },
-  { apt: "verano", name: "Bruna", text: "Voltaria com certeza. Apartamento aconchegante e condomínio super completo, perfeito pra descansar.", rating: 5 },
+  { apt: "verano", name: "Hiago", text: "O Flat do Mauricio é perfeito pra quem busca um lugar tranquilo e aconchegante no Rio... prédio muito bem localizado.", rating: 5, date: "2026-06" },
+  { apt: "verano", name: "Evelyn", text: "Apartamento impecável, roupa de cama de hotel e vista linda. O condomínio tem tudo: piscina, sauna e restaurante.", rating: 5, date: "2026-05" },
+  { apt: "verano", name: "Davi", text: "A vaga de garagem foi um diferencial enorme pra nós. Check-in na portaria foi simples e rápido.", rating: 5, date: "2026-04" },
+  { apt: "verano", name: "Lucas", text: "Vista para a Pedra da Gávea no café da manhã não tem preço. Localização ótima, perto do BRT.", rating: 5, date: "2026-03" },
+  { apt: "verano", name: "Jerusa", text: "Tudo muito limpo e organizado. O Mauricio responde rapidinho e dá ótimas dicas da região.", rating: 5, date: "2026-02" },
+  { apt: "verano", name: "Bruna", text: "Voltaria com certeza. Apartamento aconchegante e condomínio super completo, perfeito pra descansar.", rating: 5, date: "2026-01" },
   // Apto Copacabana
-  { apt: "copacabana", name: "José", text: "Foi uma excelente estadia em Copacabana. O espaço é bem amplo, muito bem localizado, acesso fácil, instruções claras.", rating: 5 },
-  { apt: "copacabana", name: "Erica", text: "Apartamento reformado, tudo novo e clean. A esquina da praia facilitou tudo: acordávamos e já estávamos na areia.", rating: 5 },
-  { apt: "copacabana", name: "Alessandro", text: "Self check-in perfeito pra quem chega tarde. Fechadura eletrônica sem complicação, portaria atenciosa.", rating: 5 },
-  { apt: "copacabana", name: "Leticia", text: "TV Smart no quarto, cama king confortável, tudo funcionando. Voltaria sem pensar duas vezes.", rating: 5 },
-  { apt: "copacabana", name: "Gabryela", text: "Pudemos deixar as malas depois do checkout e aproveitar o dia inteiro na praia. Anfitrião muito atencioso.", rating: 5 },
-  { apt: "copacabana", name: "Debora", text: "Localização privilegiada, apartamento cheiroso e roupas de cama de algodão de verdade. Nota 10.", rating: 5 },
+  { apt: "copacabana", name: "José", text: "Foi uma excelente estadia em Copacabana. O espaço é bem amplo, muito bem localizado, acesso fácil, instruções claras.", rating: 5, date: "2026-07" },
+  { apt: "copacabana", name: "Erica", text: "Apartamento reformado, tudo novo e clean. A esquina da praia facilitou tudo: acordávamos e já estávamos na areia.", rating: 5, date: "2026-06" },
+  { apt: "copacabana", name: "Alessandro", text: "Self check-in perfeito pra quem chega tarde. Fechadura eletrônica sem complicação, portaria atenciosa.", rating: 5, date: "2026-05" },
+  { apt: "copacabana", name: "Leticia", text: "TV Smart no quarto, cama king confortável, tudo funcionando. Voltaria sem pensar duas vezes.", rating: 5, date: "2026-04" },
+  { apt: "copacabana", name: "Gabryela", text: "Pudemos deixar as malas depois do checkout e aproveitar o dia inteiro na praia. Anfitrião muito atencioso.", rating: 5, date: "2026-03" },
+  { apt: "copacabana", name: "Debora", text: "Localização privilegiada, apartamento cheiroso e roupas de cama de algodão de verdade. Nota 10.", rating: 5, date: "2026-02" },
 ];
+
+export type ReviewSort = "recent" | "rating";
 
 export type FaqCategory = "checkin" | "regras" | "regiao";
 

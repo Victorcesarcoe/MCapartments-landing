@@ -2,8 +2,8 @@
  * DESIGN "Aquarela Carioca": secção de avaliações reais — carrossel interativo com
  * testemunhos dos hóspedes, setas de navegação, miniaturas, swipe touch e autoplay.
  */
-import { useState, useCallback, useEffect, useRef } from "react";
-import { ALL_REVIEWS, APT1, APT2 } from "@/lib/data";
+import { useState, useCallback, useEffect, useRef, useMemo } from "react";
+import { ALL_REVIEWS, APT1, APT2, type ReviewSort } from "@/lib/data";
 import { Star, Award, ExternalLink, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 
 const REVIEWS_PER_SLIDE = 3;
@@ -51,15 +51,29 @@ function AirbnbRatingBlock() {
 }
 
 export default function Reviews() {
-  const featured = ALL_REVIEWS.filter((r) => r.rating === 5);
-  const others = ALL_REVIEWS.filter((r) => r.rating < 5);
-  const allReviews = [...featured, ...others];
-  const totalSlides = Math.ceil(allReviews.length / REVIEWS_PER_SLIDE);
-
   const [current, setCurrent] = useState(0);
   const [playing, setPlaying] = useState(true);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [sort, setSort] = useState<ReviewSort>("recent");
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+
+  // Ordenar reviews
+  const sortedReviews = useMemo(() => {
+    const reviews = [...ALL_REVIEWS];
+    if (sort === "recent") {
+      reviews.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+    } else {
+      reviews.sort((a, b) => b.rating - a.rating || (b.date || "").localeCompare(a.date || ""));
+    }
+    return reviews;
+  }, [sort]);
+
+  const totalSlides = Math.ceil(sortedReviews.length / REVIEWS_PER_SLIDE);
+
+  // Resetar para o primeiro slide quando mudar a ordenação
+  useEffect(() => {
+    setCurrent(0);
+  }, [sort]);
 
   // Detectar touch device para otimizar autoplay
   useEffect(() => {
@@ -170,6 +184,25 @@ export default function Reviews() {
             <ChevronRight className="h-5 w-5 text-foreground" />
           </button>
 
+          {/* Filtro de ordenação */}
+          <div className="reveal mb-6 flex items-center justify-center gap-2">
+            <span className="label-eyebrow mr-2 text-xs text-muted-foreground">Ordenar:</span>
+            {(["recent", "rating"] as ReviewSort[]).map((s) => (
+              <button
+                key={s}
+                type="button"
+                onClick={() => setSort(s)}
+                className={`btn-press rounded-full px-4 py-1.5 text-xs font-medium transition-all duration-200 ${
+                  sort === s
+                    ? "bg-terracotta text-primary-foreground"
+                    : "border border-border bg-card text-muted-foreground hover:border-terracotta/40 hover:text-foreground"
+                }`}
+              >
+                {s === "recent" ? "Mais recentes" : "Melhor classificação"}
+              </button>
+            ))}
+          </div>
+
           {/* Slides */}
           <div
             className="overflow-hidden"
@@ -183,9 +216,9 @@ export default function Reviews() {
               }}
             >
               {Array.from({ length: totalSlides }).map((_, slideIdx) => (
-                <div key={slideIdx} className="w-full shrink-0 px-1">
+                <div key={`${sort}-${slideIdx}`} className="w-full shrink-0 px-1">
                   <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                    {allReviews
+                    {sortedReviews
                       .slice(slideIdx * REVIEWS_PER_SLIDE, (slideIdx + 1) * REVIEWS_PER_SLIDE)
                       .map((r, i) => (
                         <figure
