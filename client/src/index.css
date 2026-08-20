@@ -215,6 +215,24 @@
     transform: scale(0.97);
   }
 
+  /* Hover suave dos CTAs no Hero — elevação + brilho + leve rotação */
+  @media (prefers-reduced-motion: no-preference) {
+    .btn-cta-hover {
+      transition:
+        transform 220ms var(--ease-out-snap),
+        box-shadow 240ms var(--ease-out-snap),
+        filter 220ms var(--ease-out-snap),
+        background-color 220ms var(--ease-out-snap);
+    }
+    .btn-cta-hover:hover {
+      transform: translateY(-3px) scale(1.02);
+      filter: brightness(1.08);
+    }
+    .btn-cta-hover:active {
+      transform: translateY(0) scale(0.98);
+    }
+  }
+
   /* Selo/carimbo editorial — rotação sutil + textura de carimbo */
   .stamp-rotate {
     transform: rotate(-2deg);
@@ -255,8 +273,38 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* Stagger: atraso na transição para elementos filhos dentro de um .reveal
+       (usa transitionDelay via style inline + estas classes como fallback) */
+    .reveal > .stagger-1,
+    .stagger-1 {
+      transition-delay: 120ms;
+    }
+    .reveal > .stagger-2,
+    .stagger-2 {
+      transition-delay: 240ms;
+    }
+    .reveal > .stagger-3,
+    .stagger-3 {
+      transition-delay: 360ms;
+    }
   }
-}
+
+  /* Indicador de scroll: bolinha que desce e reaparece dentro da pílula */
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes scroll-indicator-bounce {
+      0%, 100% { transform: translateY(0); opacity: 0.6; }
+      25% { transform: translateY(4px); opacity: 1; }
+      50% { transform: translateY(0); opacity: 0.6; }
+      75% { transform: translateY(4px); opacity: 1; }
+    }
+    .scroll-indicator-dot {
+      animation: scroll-indicator-bounce 1.8s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+    }
+    .scroll-indicator:hover .scroll-indicator-dot {
+      animation-duration: 1.2s;
+    }
+  }
 
   /* Anel de pulsação do botão flutuante de WhatsApp */
   @keyframes pulse-ring {
@@ -273,3 +321,4 @@
       opacity: 0;
     }
   }
+}

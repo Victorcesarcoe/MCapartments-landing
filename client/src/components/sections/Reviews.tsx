@@ -13,13 +13,14 @@ const REVIEWS_PER_SLIDE = 3;
 function AirbnbRatingBlock() {
   return (
     <div className="reveal mb-10 grid gap-5 lg:grid-cols-2">
-      {[APT1, APT2].map((apt) => (
+      {[APT1, APT2].map((apt, idx) => (
         <a
           key={apt.id}
           href={apt.airbnbUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="card-lift group flex items-center gap-5 rounded-3xl border border-border bg-card p-6 shadow-sm"
+          className="card-lift reveal stagger-1 group flex items-center gap-5 rounded-3xl border border-border bg-card p-6 shadow-sm"
+          style={{ transitionDelay: `${idx * 120}ms` }}
         >
           <div
             className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl ${apt.accent === "olive" ? "bg-olive/15" : "bg-seablue/15"}`}
@@ -140,11 +141,11 @@ export default function Reviews() {
       </div>
       <div className="container relative z-10">
         <div className="reveal mb-6 max-w-2xl">
-          <p className="label-eyebrow mb-4 text-terracotta">O que dizem os hóspedes</p>
-          <h2 className="font-serif text-3xl font-semibold leading-tight sm:text-5xl">
+          <p className="label-eyebrow stagger-1 mb-4 text-terracotta">O que dizem os hóspedes</p>
+          <h2 className="stagger-2 font-serif text-3xl font-semibold leading-tight sm:text-5xl">
             Avaliações reais dos <em className="text-terracotta">anúncios no Airbnb</em>
           </h2>
-          <p className="mt-4 text-base text-muted-foreground sm:text-lg">
+          <p className="stagger-3 mt-4 text-base text-muted-foreground sm:text-lg">
             Todas as avaliações abaixo são públicas e podem ser conferidas diretamente nas páginas oficiais
             dos anúncios no Airbnb.
           </p>
@@ -153,7 +154,7 @@ export default function Reviews() {
         <AirbnbRatingBlock />
 
         {/* Resumo da classificação média */}
-        <div className="reveal mb-8 flex flex-wrap items-center justify-center gap-8 rounded-3xl border border-border bg-card px-8 py-6 shadow-sm">
+        <div className="reveal stagger-2 mb-8 flex flex-wrap items-center justify-center gap-8 rounded-3xl border border-border bg-card px-8 py-6 shadow-sm">
           {[APT1, APT2].map((apt) => (
             <div key={apt.id} className="flex items-center gap-4">
               <span className="font-serif text-4xl font-bold text-terracotta">
@@ -185,7 +186,7 @@ export default function Reviews() {
         </div>
 
         {/* Carrossel interativo de testemunhos */}
-        <div className="reveal relative" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+        <div className="reveal stagger-2 relative" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
           {/* Setas de navegação */}
           <button
             type="button"
@@ -205,7 +206,7 @@ export default function Reviews() {
           </button>
 
           {/* Filtro de ordenação */}
-          <div className="reveal mb-6 flex items-center justify-center gap-2">
+          <div className="reveal stagger-1 mb-6 flex items-center justify-center gap-2">
             <span className="label-eyebrow mr-2 text-xs text-muted-foreground">Ordenar:</span>
             {(["recent", "rating"] as ReviewSort[]).map((s) => (
               <button

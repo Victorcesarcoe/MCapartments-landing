@@ -78,14 +78,14 @@ export default function Hero() {
             <button
               type="button"
               onClick={() => scrollTo("verano-stay")}
-              className="btn-press rounded-full bg-terracotta px-8 py-4 font-semibold text-primary-foreground shadow-[0_10px_30px_-8px_rgba(180,86,47,0.6)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_14px_36px_-6px_rgba(180,86,47,0.7)] hover:brightness-110"
+              className="btn-cta-hover btn-press rounded-full bg-terracotta px-8 py-4 font-semibold text-primary-foreground shadow-[0_10px_30px_-8px_rgba(180,86,47,0.6)] hover:shadow-[0_18px_40px_-8px_rgba(180,86,47,0.75)]"
             >
               Ver Flat Verano Stay · Barra
             </button>
             <button
               type="button"
               onClick={() => scrollTo("copacabana")}
-              className="btn-press rounded-full border border-[#1f3328]/60 bg-[#1f3328]/40 px-8 py-4 font-semibold text-paper backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#1f3328]/70 hover:shadow-[0_14px_36px_-6px_rgba(31,51,40,0.6)] hover:brightness-110"
+              className="btn-cta-hover btn-press rounded-full border border-[#1f3328]/60 bg-[#1f3328]/40 px-8 py-4 font-semibold text-paper backdrop-blur-sm hover:bg-[#1f3328]/70 hover:shadow-[0_18px_40px_-8px_rgba(31,51,40,0.65)]"
             >
               Ver Apto Copacabana · Praia
             </button>
@@ -104,14 +104,21 @@ export default function Hero() {
         </div>
       </div>
 
-      <button
-        type="button"
-        onClick={() => scrollTo("host")}
-        aria-label="Rolar para baixo"
-        className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 animate-bounce items-center justify-center rounded-full border border-paper/50 bg-palm/40 p-2.5 text-paper transition-all duration-300 ease-out hover:-translate-x-1/2 hover:translate-y-0.5 hover:bg-palm/70 lg:flex"
+      {/* Indicador visual animado de scroll down */}
+      <div
+        className="hero-fade-in hero-delay-4 absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 lg:flex"
+        aria-hidden
       >
-        <ChevronDown className="h-5 w-5" />
-      </button>
+        <button
+          type="button"
+          onClick={() => scrollTo("host")}
+          aria-label="Rolar para baixo"
+          className="scroll-indicator group flex h-12 w-7 items-start justify-center rounded-full border border-paper/50 bg-palm/40 p-2 backdrop-blur-sm transition-all duration-300 hover:bg-palm/70"
+        >
+          <span className="scroll-indicator-dot mt-0 h-2 w-1.5 rounded-full bg-paper/80 transition-colors duration-300 group-hover:bg-paper" />
+        </button>
+        <span className="label-eyebrow text-[10px] tracking-[0.2em] text-paper/60">Deslize</span>
+      </div>
     </section>
   );
 }
