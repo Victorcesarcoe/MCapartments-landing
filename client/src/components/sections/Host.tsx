@@ -6,7 +6,7 @@
 import { Award, MessageCircle, Star, Waves } from "lucide-react";
 
 const STATS = [
-  { value: "4,94", unit: "/ 5", label: "Avaliações", icon: Star },
+  { value: "4,94", unit: "/ 5", label: "Nota média", icon: Star },
   { value: "408", unit: "", label: "Avaliações", icon: MessageCircle },
   { value: "7", unit: "anos", label: "De experiência em hospedagem", icon: Waves },
   { value: "100", unit: "%", label: "Taxa de resposta", icon: Award },
@@ -65,9 +65,9 @@ export default function Host() {
           {/* Coluna direita: estatísticas + Superhost */}
           <div className="reveal flex flex-col gap-6">
             <div className="grid grid-cols-2 gap-3">
-              {STATS.map((s) => (
+              {STATS.map((s, i) => (
                 <div
-                  key={s.label}
+                  key={`stat-${i}`}
                   className="card-lift rounded-2xl border border-border bg-card p-6 text-center shadow-sm"
                 >
                   <s.icon className="mx-auto mb-3 h-5 w-5 text-terracotta" />
