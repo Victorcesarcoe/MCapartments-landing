@@ -45,12 +45,11 @@ export default function Hero() {
             Superhost · 7 anos hospedando
           </p>
           <h1 className="font-serif text-4xl leading-[1.05] font-semibold text-paper sm:text-6xl lg:text-7xl">
-            Duas estadias. <em className="text-[#efc4a3]">Um só anfitrião</em> de confiança no Rio.
+            Viva o Rio. <em className="text-[#efc4a3]">Hospede-se com confiança.</em>
           </h1>
           <p className="mt-6 max-w-xl text-base text-paper/85 sm:text-lg">
-            Flat Verano Stay na <strong className="text-paper">Barra Olímpica</strong> com vista para a Pedra da
-            Gávea, e apartamento reformado na <strong className="text-paper">esquina da praia de Copacabana</strong> —
-            408 avaliações e nota <strong className="text-[#f0d9c0]">4,94</strong>.
+            Duas experiências cuidadosamente preparadas para você: a energia de <strong className="text-paper">Copacabana</strong> ou o
+            conforto da <strong className="text-paper">Barra Olímpica</strong> — 408 avaliações e nota <strong className="text-[#f0d9c0]">4,94</strong>.
           </p>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
