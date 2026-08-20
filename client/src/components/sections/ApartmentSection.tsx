@@ -37,6 +37,7 @@ type Apt = {
   review: { name: string; text: string; rating: number };
   whatsappMessage: string;
   airbnbUrl: string;
+  calendarUrl?: string;
 };
 
 interface Props {
@@ -214,10 +215,19 @@ export default function ApartmentSection({ apt, reversed, theme }: Props) {
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <a
+                href={apt.calendarUrl || apt.airbnbUrl || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-press inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#1f3328] bg-transparent px-7 py-4 font-semibold text-[#1f3328] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#1f3328] hover:text-paper hover:shadow-[0_10px_28px_-8px_rgba(31,51,40,0.55)]"
+              >
+                <ExternalLink className="h-4.5 w-4.5" />
+                Ver Disponibilidade
+              </a>
+              <a
                 href={apt.airbnbUrl || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-press inline-flex items-center justify-center gap-2 rounded-full bg-terracotta px-7 py-4 font-semibold text-primary-foreground shadow-[0_10px_28px_-8px_rgba(180,86,47,0.55)]"
+                className="btn-press inline-flex items-center justify-center gap-2 rounded-full bg-terracotta px-7 py-4 font-semibold text-primary-foreground shadow-[0_10px_28px_-8px_rgba(180,86,47,0.55)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_14px_32px_-6px_rgba(180,86,47,0.65)] hover:brightness-110"
               >
                 <ExternalLink className="h-4.5 w-4.5" />
                 Reservar no Airbnb

@@ -60,6 +60,9 @@ export const APT1 = {
   whatsappMessage: "Olá! Tenho interesse no Flat Verano Stay, Barra Olímpica",
   airbnbUrl:
     "https://www.airbnb.com.br/rooms/1400085363404009600?viralityEntryPoint=1&s=76&slug=nhlWjM2y",
+  /** URL com o calendário do Airbnb já aberto na página do anúncio */
+  calendarUrl:
+    "https://www.airbnb.com.br/rooms/1400085363404009600?calendar=1",
 };
 
 export const APT2 = {
@@ -107,6 +110,8 @@ export const APT2 = {
   },
   whatsappMessage: "Olá! Tenho interesse no Apto Copacabana, esquina da praia",
   airbnbUrl: "https://www.airbnb.com.br/rooms/969086169262685020",
+  /** URL com o calendário do Airbnb já aberto na página do anúncio */
+  calendarUrl: "https://www.airbnb.com.br/rooms/969086169262685020?calendar=1",
   /** Comodidades principais que aparecem em destaque antes do tour em vídeo */
   highlights: ["Prédio na esquina da praia de Copacabana", "Self check-in com fechadura eletrônica", "Cama king size + sofá-cama", "Portaria 24h com espaço para bagagem"],
 };
