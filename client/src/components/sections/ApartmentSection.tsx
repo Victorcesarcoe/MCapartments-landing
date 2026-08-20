@@ -10,6 +10,7 @@ import PhotoGallery from "@/components/PhotoGallery";
 import GuestFavoriteBadge from "@/components/GuestFavoriteBadge";
 import AmenityIcon from "@/components/AmenityIcon";
 import { Star, MapPin, Users, BedDouble, Bath, MessageCircle, ExternalLink, Quote, Sparkles, Award, ShieldCheck } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 type Apt = {
   id: string;
@@ -212,17 +213,52 @@ export default function ApartmentSection({ apt, reversed, theme }: Props) {
               <p className="mt-2 text-sm text-muted-foreground">
                 Direto pelo Airbnb ou fale com o Mauricio no WhatsApp para combinar datas e valores.
               </p>
-              {/* Selo Superhost */}
-              <div className="mt-4 inline-flex items-center gap-2.5 rounded-lg border border-[#1f3328]/15 bg-[#1f3328]/5 px-4 py-2.5">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#1f3328] shadow-[0_2px_8px_-2px_rgba(31,51,40,0.4)]">
-                  <Award className="h-5 w-5 text-[#d4a853]" />
-                </span>
-                <div className="leading-tight">
-                  <span className="block text-sm font-bold text-[#1f3328]">Airbnb Superhost</span>
-                  <span className="block text-xs text-muted-foreground">Reconhecimento oficial de excelência</span>
-                </div>
-                <ShieldCheck className="ml-1 h-5 w-5 text-[#1f3328]/40" />
-              </div>
+              {/* Selo Superhost com tooltip explicativo */}
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <div className="mt-4 inline-flex cursor-help items-center gap-2.5 rounded-lg border border-[#1f3328]/15 bg-[#1f3328]/5 px-4 py-2.5 transition-colors duration-200 hover:bg-[#1f3328]/10">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#1f3328] shadow-[0_2px_8px_-2px_rgba(31,51,40,0.4)]">
+                        <Award className="h-5 w-5 text-[#d4a853]" />
+                      </span>
+                      <div className="leading-tight">
+                        <span className="block text-sm font-bold text-[#1f3328]">Airbnb Superhost</span>
+                        <span className="block text-xs text-muted-foreground">Reconhecimento oficial de excelência</span>
+                      </div>
+                      <ShieldCheck className="ml-1 h-5 w-5 text-[#1f3328]/40" />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent
+                    side="top"
+                    align="start"
+                    className="max-w-[320px] bg-[#1f3328] p-4 text-paper shadow-xl"
+                    sideOffset={8}
+                  >
+                    <p className="mb-2 text-sm font-bold text-[#d4a853]">Critérios do programa Superhost</p>
+                    <ul className="space-y-1.5 text-xs leading-relaxed text-paper/90">
+                      <li className="flex items-start gap-2">
+                        <Star className="mt-0.5 h-3 w-3 flex-shrink-0 text-[#d4a853]" />
+                        <span>Nota média de <strong>4,8+ em 5</strong> nas avaliações</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <Star className="mt-0.5 h-3 w-3 flex-shrink-0 text-[#d4a853]" />
+                        <span><strong>90% ou mais</strong> de taxa de resposta</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <Star className="mt-0.5 h-3 w-3 flex-shrink-0 text-[#d4a853]" />
+                        <span><strong>Menos de 1%</strong> de cancelamentos pelo anfitrião</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <Star className="mt-0.5 h-3 w-3 flex-shrink-0 text-[#d4a853]" />
+                        <span><strong>10+ hospedagens</strong> concluídas por ano</span>
+                      </li>
+                    </ul>
+                    <p className="mt-2 border-t border-paper/20 pt-2 text-[10px] text-paper/60">
+                      Avaliado trimestralmente pela Airbnb com base no desempenho real.
+                    </p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <a
