@@ -135,30 +135,83 @@ export const ALL_REVIEWS = [
   { apt: "copacabana", name: "Debora", text: "Localização privilegiada, apartamento cheiroso e roupas de cama de algodão de verdade. Nota 10.", rating: 5 },
 ];
 
+export type FaqCategory = "checkin" | "regras" | "regiao";
+
+export const FAQ_GROUPS: { category: FaqCategory; label: string }[] = [
+  { category: "checkin", label: "Check-in e horários" },
+  { category: "regras", label: "Regras da casa" },
+  { category: "regiao", label: "Dicas sobre a região" },
+];
+
 export const FAQ = [
+  // Check-in e horários
   {
+    category: "checkin",
     q: "Qual o horário de check-in e checkout?",
     a: "Check-in a partir das 14h e checkout até às 11h. No Apto de Copacabana o self check-in com fechadura eletrônica permite entrar a qualquer hora após o horário liberado, sem depender de agenda.",
   },
   {
+    category: "checkin",
     q: "Como faço o check-in em cada apartamento?",
     a: "No Flat Verano Stay (Barra), o check-in é feito na portaria do condomínio, que tem recepção 24h. Em Copacabana, o self check-in é feito com fechadura eletrônica — você recebe o código antes da chegada e entra com total liberdade.",
   },
   {
+    category: "checkin",
+    q: "Posso deixar bagagem fora do horário?",
+    a: "Sim, no Apto de Copacabana é permitido deixar as malas antes do check-in ou depois do checkout (conforme disponibilidade). Na Barra, a portaria 24h ajuda na logística da sua chegada e partida.",
+  },
+  // Regras da casa
+  {
+    category: "regras",
+    q: "Quais são as regras da casa?",
+    a: "Ambos os apartamentos são para não fumantes. Festas e eventos não são permitidos. No condomínio da Barra, os hóspedes seguem as normas internas (horários da piscina e áreas comuns, silêncio a partir das 22h). Animais de estimação e visitas devem ser combinados antes da reserva.",
+  },
+  {
+    category: "regras",
+    q: "Existe taxa de limpeza ou depósito de segurança?",
+    a: "A taxa de limpeza já está incluída no valor do anúncio no Airbnb. Não há depósito de segurança para estadias curtas — tudo fica transparente no momento da reserva, sem surpresas.",
+  },
+  {
+    category: "regras",
+    q: "É permitido fumar ou fazer festas?",
+    a: "Não. Os dois apartamentos são 100% não fumantes e festas não são permitidas. O condomínio da Barra tem regras de silêncio e uso das áreas comuns que valem para todos os hóspedes.",
+  },
+  // Capacidade e logística
+  {
+    category: "checkin",
     q: "Quantos hóspedes cada apartamento acomoda?",
     a: "Ambos acomodam até 4 hóspedes. O Flat da Barra tem cama queen e sofá-cama que vira cama de casal; o de Copacabana tem cama king size e sofá-cama.",
   },
   {
-    q: "Posso deixar bagagem fora do horário?",
-    a: "Sim, no Apto de Copacabana é permitido deixar as malas antes do check-in ou depois do checkout (conforme disponibilidade). Na Barra, a portaria 24h ajuda na logística da sua chegada e partida.",
+    category: "checkin",
+    q: "Preciso de carro na Barra?",
+    a: "Não necessariamente: o condomínio fica próximo à estação do BRT e o Flat inclui vaga de garagem gratuita para quem preferir dirigir.",
   },
   {
+    category: "checkin",
     q: "Como reservo diretamente, sem passar pelo site?",
     a: "Você pode reservar pelos anúncios no Airbnb ou falar diretamente com o Mauricio no WhatsApp — ele ajuda com datas, valores e qualquer dúvida antes de você reservar.",
   },
+  // Dicas da região
   {
-    q: "Preciso de carro na Barra?",
-    a: "Não necessariamente: o condomínio fica próximo à estação do BRT e o Flat inclui vaga de garagem gratuita para quem preferir dirigir.",
+    category: "regiao",
+    q: "O que há para fazer perto do Flat na Barra?",
+    a: "A região da Barra Olímpica tem o Parque Olímpico para caminhadas, a Praia da Reserva e a Praia de Grumari a poucos minutos de carro, além do VillageMall e do Parque das Dunas. O condomínio também tem piscina, sauna, academia e restaurante internos.",
+  },
+  {
+    category: "regiao",
+    q: "O que fazer perto do apartamento em Copacabana?",
+    a: "Estando na esquina da praia, você está a minutos do Posto 5, do Forte de Copacabana e do calçadão de mosaico. Há farmácias, padarias, restaurantes e supermercados ao redor, e o metrô de Siqueira Campos fica a poucos quarteirões.",
+  },
+  {
+    category: "regiao",
+    q: "Como chegar de cada apartamento ao Pão de Açúcar ou à Lagoa?",
+    a: "De Copacabana, o acesso é rápido pela Avenida Atlântica de carro ou ônibus. Da Barra, dá para ir pelo Túnel da Joatinga em cerca de 30–40 minutos de carro, ou de BRT + metrô. O Mauricio envia o melhor caminho pelo WhatsApp antes da sua chegada.",
+  },
+  {
+    category: "regiao",
+    q: "Vale a pena ir ao Rio no Ano Novo ou no Carnaval?",
+    a: "Sim — mas as datas altas esgotam rápido. Para o Réveillon, o apartamento de Copacabana fica a passos da festa na praia; para o Carnaval, ambos são base prática para os blocos. Reserve com antecedência e converse com o Mauricio sobre valores de alta temporada.",
   },
 ];
 

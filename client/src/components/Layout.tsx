@@ -110,17 +110,28 @@ export function FloatingWhatsApp() {
         type="button"
         onClick={() => setWhich(true)}
         aria-label="Reservar pelo WhatsApp"
-        className="btn-press fixed bottom-6 right-6 z-40 flex h-15 w-15 items-center justify-center rounded-full bg-[#25D366] p-4 text-white shadow-[0_12px_34px_-6px_rgba(37,211,102,0.55)]"
+        className="btn-press group fixed bottom-6 right-6 z-40 flex h-15 w-15 items-center justify-center rounded-full bg-[#25D366] p-4 text-white shadow-[0_12px_34px_-6px_rgba(37,211,102,0.55)] transition-transform duration-200 hover:scale-105"
       >
-        <MessageCircle className="h-7 w-7" />
+        {/* Anel de pulsação */}
+        <span
+          className="absolute inset-0 rounded-full bg-[#25D366]/50 [animation:pulse-ring_2.2s_cubic-bezier(0.23,1,0.32,1)_infinite]"
+          aria-hidden
+        />
+        <MessageCircle className="relative h-7 w-7" />
+        {/* Tooltip */}
+        <span className="pointer-events-none absolute bottom-full right-0 mb-2 hidden whitespace-nowrap rounded-xl bg-palm px-3.5 py-2 text-sm font-semibold text-palm-foreground shadow-lg group-hover:block">
+          Falar no WhatsApp
+        </span>
       </button>
 
       {which && (
         <div
           className="fixed inset-0 z-50 flex items-end justify-center bg-palm/85 p-4 backdrop-blur-sm sm:items-center"
           onClick={() => setWhich(false)}
+          onKeyDown={(e) => e.key === "Escape" && setWhich(false)}
           role="dialog"
           aria-modal="true"
+          tabIndex={-1}
         >
           <div
             className="w-full max-w-sm rounded-2xl border border-border bg-card p-6 shadow-2xl"

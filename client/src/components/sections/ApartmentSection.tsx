@@ -88,7 +88,7 @@ export default function ApartmentSection({ apt, reversed, theme }: Props) {
           </div>
           <div className="reveal order-2">
             <p className="label-eyebrow mb-4 text-terracotta">Fotos</p>
-            <PhotoGallery photos={apt.gallery} accent={apt.accent} />
+            <PhotoGallery photos={apt.gallery} accent={apt.accent} shareTitle={apt.name} shareUrl={apt.airbnbUrl} />
             {/* Ficha rápida */}
             <div className="mt-6 grid grid-cols-2 gap-3 rounded-2xl border border-border bg-card p-5 shadow-sm sm:grid-cols-4">
               <div className="flex items-center gap-2.5">
