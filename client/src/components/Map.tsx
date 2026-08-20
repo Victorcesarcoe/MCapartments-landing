@@ -92,21 +92,37 @@ const FORGE_BASE_URL =
   "https://forge.butterfly-effect.dev";
 const MAPS_PROXY_URL = `${FORGE_BASE_URL}/v1/maps/proxy`;
 
-function loadMapScript() {
-  return new Promise(resolve => {
+// Partilha um único carregamento da API entre todos os MapView da página
+// para evitar o erro "Google Maps JavaScript API loaded multiple times".
+// Persistida no window para sobreviver a recargas de módulo (HMR/Vite).
+declare global {
+  interface Window {
+    __gmapsLoadPromise?: Promise<void>;
+  }
+}
+
+const GMAPS_SCRIPT_ID = "gmaps-js";
+
+function loadMapScript(): Promise<void> {
+  if (window.google?.maps) return Promise.resolve();
+  if (window.__gmapsLoadPromise) return window.__gmapsLoadPromise;
+  window.__gmapsLoadPromise = new Promise<void>((resolve, reject) => {
+    const existing = document.getElementById(GMAPS_SCRIPT_ID);
+    if (existing) return; // já existe; o onload resolverá quando concluir
     const script = document.createElement("script");
+    script.id = GMAPS_SCRIPT_ID;
     script.src = `${MAPS_PROXY_URL}/maps/api/js?key=${API_KEY}&v=weekly&libraries=marker,places,geocoding,geometry`;
     script.async = true;
+    script.setAttribute("loading", "async");
     script.crossOrigin = "anonymous";
-    script.onload = () => {
-      resolve(null);
-      script.remove(); // Clean up immediately
-    };
+    script.onload = () => resolve();
     script.onerror = () => {
-      console.error("Failed to load Google Maps script");
+      window.__gmapsLoadPromise = undefined;
+      reject(new Error("Failed to load Google Maps script"));
     };
     document.head.appendChild(script);
   });
+  return window.__gmapsLoadPromise;
 }
 
 interface MapViewProps {
@@ -126,9 +142,12 @@ export function MapView({
   const map = useRef<google.maps.Map | null>(null);
 
   const init = usePersistFn(async () => {
-    await loadMapScript();
-    if (!mapContainer.current) {
-      console.error("Map container not found");
+    try {
+      await loadMapScript();
+    } catch {
+      return; // falha de rede; aborta a criação do mapa
+    }
+    if (!mapContainer.current || map.current) {
       return;
     }
     map.current = new window.google.maps.Map(mapContainer.current, {
@@ -138,7 +157,6 @@ export function MapView({
       fullscreenControl: true,
       zoomControl: true,
       streetViewControl: true,
-      mapId: "DEMO_MAP_ID",
     });
     if (onMapReady) {
       onMapReady(map.current);
