@@ -192,10 +192,10 @@ export default function Reviews() {
                 key={s}
                 type="button"
                 onClick={() => setSort(s)}
-                className={`btn-press rounded-full px-4 py-1.5 text-xs font-medium transition-all duration-200 ${
+                className={`btn-press rounded-full px-4 py-1.5 text-xs font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md ${
                   sort === s
-                    ? "bg-terracotta text-primary-foreground"
-                    : "border border-border bg-card text-muted-foreground hover:border-terracotta/40 hover:text-foreground"
+                    ? "bg-terracotta text-primary-foreground shadow-sm"
+                    : "border border-border bg-card text-muted-foreground hover:border-terracotta/50 hover:text-foreground hover:bg-card"
                 }`}
               >
                 {s === "recent" ? "Mais recentes" : "Melhor classificação"}

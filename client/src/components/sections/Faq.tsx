@@ -3,8 +3,9 @@
  * Regras da casa, Dicas sobre a região) — accordion editorial em fundo areia.
  */
 import { FAQ, FAQ_GROUPS, WHATSAPP_BASE, type FaqCategory } from "@/lib/data";
+import { useState } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { HelpCircle, Clock, House, Compass, MessageCircle } from "lucide-react";
+import { HelpCircle, Clock, House, Compass, MessageCircle, Search, X } from "lucide-react";
 
 const CATEGORY_ICONS: Record<FaqCategory, typeof Clock> = {
   checkin: Clock,
@@ -13,6 +14,23 @@ const CATEGORY_ICONS: Record<FaqCategory, typeof Clock> = {
 };
 
 export default function Faq() {
+  const [query, setQuery] = useState("");
+  const q = query.trim().toLowerCase();
+
+  // Filtrar FAQ pela pesquisa
+  const filteredGroups = FAQ_GROUPS.map((group) => ({
+    ...group,
+    items: FAQ.filter(
+      (f) =>
+        f.category === group.category &&
+        (q === "" ||
+          f.q.toLowerCase().includes(q) ||
+          f.a.toLowerCase().includes(q))
+    ),
+  })).filter((g) => g.items.length > 0);
+
+  const totalResults = filteredGroups.reduce((acc, g) => acc + g.items.length, 0);
+
   return (
     <section id="faq" className="bg-sand py-20 lg:py-28">
       <div className="container grid gap-12 lg:grid-cols-[4fr_8fr]">
@@ -27,9 +45,36 @@ export default function Faq() {
           </p>
         </div>
         <div className="reveal space-y-10">
-          {FAQ_GROUPS.map((group) => {
+          {/* Campo de pesquisa */}
+          <div className="relative">
+            <Search className="pointer-events-none absolute left-4 top-1/2 h-4.5 w-4.5 -translate-y-1/2 text-muted-foreground" />
+            <input
+              type="search"
+              placeholder="Pesquisar perguntas…"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="w-full rounded-2xl border border-border bg-card py-3.5 pl-11 pr-10 text-sm shadow-sm outline-none transition-all duration-200 placeholder:text-muted-foreground/60 focus:border-terracotta/40 focus:ring-2 focus:ring-terracotta/10"
+              aria-label="Pesquisar perguntas do FAQ"
+            />
+            {q && (
+              <button
+                type="button"
+                onClick={() => setQuery("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1.5 text-muted-foreground transition-colors hover:bg-muted-foreground/10"
+                aria-label="Limpar pesquisa"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            )}
+          </div>
+          {q && (
+            <p className="label-eyebrow text-xs text-muted-foreground">
+              {totalResults === 0 ? "Nenhuma pergunta encontrada." : `${totalResults} resultado${totalResults === 1 ? "" : "s"} encontrado${totalResults === 1 ? "" : "s"}`}
+            </p>
+          )}
+          {filteredGroups.map((group) => {
             const Icon = CATEGORY_ICONS[group.category];
-            const items = FAQ.filter((f) => f.category === group.category);
+            const items = group.items;
             if (items.length === 0) return null;
             return (
               <div key={group.category}>
