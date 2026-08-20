@@ -1,0 +1,96 @@
+/*
+ * DESIGN "Aquarela Carioca": Hero em tela cheia — vídeo de fundo (reel dos 2 aptos),
+ * headline serifada gigante alinhada à esquerda, gradiente terracota/verde para contraste,
+ * dois CTAs com scroll suave.
+ */
+import { ChevronDown } from "lucide-react";
+
+const HERO_VIDEO: string = ""; // TODO: reel de destaque intercalando os 2 apartamentos (mp4/webm)
+const HERO_POSTER = "/manus-storage/hero-rio_4f1073a1.jpg";
+
+function scrollTo(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+export default function Hero() {
+  return (
+    <section id="hero" className="relative flex min-h-[92vh] items-end overflow-hidden">
+      {/* Vídeo de fundo com poster */}
+      <div className="absolute inset-0">
+        {HERO_VIDEO ? (
+          <video
+            className="h-full w-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster={HERO_POSTER}
+            preload="metadata"
+          >
+            <source src={HERO_VIDEO} type="video/mp4" />
+            <source src={HERO_VIDEO.replace(".mp4", ".webm")} type="video/webm" />
+          </video>
+        ) : (
+          <img src={HERO_POSTER} alt="Rio de Janeiro ao entardecer visto de um apartamento" className="h-full w-full object-cover" />
+        )}
+        {/* Gradiente para garantir contraste do texto */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1f3328]/95 via-[#1f3328]/45 to-[#1f3328]/25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1f3328]/70 via-transparent to-transparent" />
+      </div>
+
+      <div className="container relative z-10 pb-24 pt-36">
+        <div className="max-w-3xl">
+          <p className="label-eyebrow mb-5 flex items-center gap-3 text-[#f0d9c0]">
+            <span className="inline-block h-px w-12 bg-[#f0d9c0]/70" aria-hidden />
+            Superhost · 7 anos hospedando
+          </p>
+          <h1 className="font-serif text-4xl leading-[1.05] font-semibold text-paper sm:text-6xl lg:text-7xl">
+            Duas estadias. <em className="text-[#efc4a3]">Um só anfitrião</em> de confiança no Rio.
+          </h1>
+          <p className="mt-6 max-w-xl text-base text-paper/85 sm:text-lg">
+            Flat Verano Stay na <strong className="text-paper">Barra Olímpica</strong> com vista para a Pedra da
+            Gávea, e apartamento reformado na <strong className="text-paper">esquina da praia de Copacabana</strong> —
+            408 avaliações e nota <strong className="text-[#f0d9c0]">4,94</strong>.
+          </p>
+
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <button
+              type="button"
+              onClick={() => scrollTo("verano-stay")}
+              className="btn-press rounded-full bg-terracotta px-8 py-4 font-semibold text-primary-foreground shadow-[0_10px_30px_-8px_rgba(180,86,47,0.6)]"
+            >
+              Ver Flat Verano Stay · Barra
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollTo("copacabana")}
+              className="btn-press rounded-full border border-paper/60 bg-paper/10 px-8 py-4 font-semibold text-paper backdrop-blur-sm hover:bg-paper/20"
+            >
+              Ver Apto Copacabana · Praia
+            </button>
+          </div>
+
+          <div className="mt-12 flex items-center gap-6 text-paper/80">
+            <div className="flex -space-x-2">
+              {["#f0d9c0", "#cde0e8", "#d8c9a8"].map((c, i) => (
+                <span key={i} className="h-8 w-8 rounded-full border-2 border-[#1f3328]" style={{ background: c }} aria-hidden />
+              ))}
+            </div>
+            <p className="text-sm">
+              <span className="font-semibold text-paper">408 avaliações</span> · Superhost há 7 anos · nota 4,94
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        onClick={() => scrollTo("host")}
+        aria-label="Rolar para baixo"
+        className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 animate-bounce items-center justify-center rounded-full border border-paper/50 bg-palm/40 p-2.5 text-paper lg:flex"
+      >
+        <ChevronDown className="h-5 w-5" />
+      </button>
+    </section>
+  );
+}
