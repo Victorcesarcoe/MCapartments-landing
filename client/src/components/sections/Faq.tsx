@@ -2,9 +2,9 @@
  * DESIGN "Aquarela Carioca": FAQ agrupado por categorias (Check-in e horários,
  * Regras da casa, Dicas sobre a região) — accordion editorial em fundo areia.
  */
-import { FAQ, FAQ_GROUPS, type FaqCategory } from "@/lib/data";
+import { FAQ, FAQ_GROUPS, WHATSAPP_BASE, type FaqCategory } from "@/lib/data";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { HelpCircle, Clock, House, Compass } from "lucide-react";
+import { HelpCircle, Clock, House, Compass, MessageCircle } from "lucide-react";
 
 const CATEGORY_ICONS: Record<FaqCategory, typeof Clock> = {
   checkin: Clock,
@@ -44,12 +44,14 @@ export default function Faq() {
                     <AccordionItem
                       key={`${group.category}-${i}`}
                       value={`faq-${group.category}-${i}`}
-                      className="rounded-2xl border border-border bg-card px-6 shadow-sm data-[state=open]:shadow-md"
+                      className="rounded-2xl border border-border bg-card px-6 shadow-sm transition-all duration-300 ease-out data-[state=open]:shadow-md data-[state=open]:border-terracotta/30"
                     >
-                      <AccordionTrigger className="py-5 text-left font-serif text-base font-semibold hover:no-underline sm:text-lg">
+                      <AccordionTrigger
+                        className="py-5 text-left font-serif text-base font-semibold transition-colors duration-300 hover:no-underline hover:text-terracotta sm:text-lg"
+                      >
                         {f.q}
                       </AccordionTrigger>
-                      <AccordionContent className="pb-5 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                      <AccordionContent className="pb-5 text-sm leading-relaxed text-muted-foreground transition-all duration-300 sm:text-base">
                         {f.a}
                       </AccordionContent>
                     </AccordionItem>
@@ -58,6 +60,25 @@ export default function Faq() {
               </div>
             );
           })}
+        </div>
+      </div>
+
+      {/* CTA Fale Connosco */}
+      <div className="container reveal mt-16">
+        <div className="flex flex-col items-center justify-center gap-4 rounded-3xl border border-border bg-card px-8 py-10 shadow-sm">
+          <p className="font-serif text-xl font-semibold sm:text-2xl">Ainda tem dúvidas?</p>
+          <p className="max-w-md text-center text-sm text-muted-foreground">
+            O Mauricio responde rapidamente no WhatsApp — antes, durante e depois da sua estadia.
+          </p>
+          <a
+            href={`${WHATSAPP_BASE}?text=${encodeURIComponent("Olá! Tenho uma dúvida sobre os apartamentos no Rio.")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-press mt-2 inline-flex items-center gap-2 rounded-full bg-terracotta px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+          >
+            Fale Connosco
+            <MessageCircle className="h-4 w-4" />
+          </a>
         </div>
       </div>
     </section>

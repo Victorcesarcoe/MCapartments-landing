@@ -118,6 +118,38 @@ export default function Reviews() {
 
         <AirbnbRatingBlock />
 
+        {/* Resumo da classificação média */}
+        <div className="reveal mb-8 flex flex-wrap items-center justify-center gap-8 rounded-3xl border border-border bg-card px-8 py-6 shadow-sm">
+          {[APT1, APT2].map((apt) => (
+            <div key={apt.id} className="flex items-center gap-4">
+              <span className="font-serif text-4xl font-bold text-terracotta">
+                {apt.rating.toFixed(2).replace(".", ",")}
+              </span>
+              <div className="flex flex-col gap-0.5">
+                <div className="flex gap-0.5">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star
+                      key={i}
+                      className={`h-4 w-4 ${i < Math.round(apt.rating) ? "fill-[#E5B94B] text-[#E5B94B]" : "text-border"}`}
+                    />
+                  ))}
+                </div>
+                <span className="label-eyebrow text-xs text-muted-foreground">
+                  {apt.reviewsCount} avaliações · {apt.shortName || apt.name}
+                </span>
+              </div>
+            </div>
+          ))}
+          <div className="hidden h-12 w-px bg-border sm:block" />
+          <div className="flex items-center gap-3">
+            <Award className="h-6 w-6 text-terracotta" />
+            <div className="flex flex-col">
+              <span className="font-serif text-lg font-semibold">Superhost</span>
+              <span className="label-eyebrow text-xs text-muted-foreground">Reconhecido pelo Airbnb</span>
+            </div>
+          </div>
+        </div>
+
         {/* Carrossel interativo de testemunhos */}
         <div className="reveal relative" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
           {/* Setas de navegação */}
