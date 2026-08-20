@@ -4,6 +4,7 @@
  * dois CTAs com scroll suave.
  */
 import { ChevronDown } from "lucide-react";
+import { useParallax } from "@/hooks/useParallax";
 
 const HERO_VIDEO: string = ""; // TODO: reel de destaque intercalando os 2 apartamentos (mp4/webm)
 const HERO_POSTER = "/manus-storage/hero-rio_4f1073a1.jpg";
@@ -18,10 +19,13 @@ function scrollTo(id: string) {
 }
 
 export default function Hero() {
+  const bgRef = useParallax(0.15);
+
   return (
     <section id="hero" className="relative flex min-h-[92vh] items-end overflow-hidden">
-      {/* Vídeo de fundo com poster */}
+      {/* Vídeo de fundo com poster + parallax */}
       <div className="absolute inset-0">
+        <div ref={bgRef} className="absolute inset-0 will-change-transform transition-transform duration-100 ease-out" style={{ transform: "translateY(0) scale(1.05)" }}>
         {HERO_VIDEO ? (
           <video
             className="h-full w-full object-cover"
@@ -41,6 +45,7 @@ export default function Hero() {
         {/* Gradiente para garantir contraste do texto */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#1f3328]/95 via-[#1f3328]/45 to-[#1f3328]/25" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#1f3328]/70 via-transparent to-transparent" />
+        </div>
       </div>
 
       <div className="container relative z-10 pb-24 pt-36">

@@ -6,6 +6,7 @@ import { useState, useCallback, useEffect, useRef, useMemo } from "react";
 import { ALL_REVIEWS, APT1, APT2, type ReviewSort } from "@/lib/data";
 import { Star, Award, ExternalLink, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 
+
 const REVIEWS_PER_SLIDE = 3;
 
 function AirbnbRatingBlock() {
@@ -117,8 +118,19 @@ export default function Reviews() {
   };
 
   return (
-    <section id="avaliacoes" className="bg-background py-20 lg:py-28">
-      <div className="container">
+    <section id="avaliacoes" className="relative overflow-hidden bg-background py-20 lg:py-28">
+      {/* Fundo decorativo com parallax */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        aria-hidden
+      >
+        <img
+          src="/manus-storage/copacabana-beach_83f6ed90.jpg"
+          alt=""
+          className="h-full w-full object-cover opacity-[0.04]"
+        />
+      </div>
+      <div className="container relative z-10">
         <div className="reveal mb-6 max-w-2xl">
           <p className="label-eyebrow mb-4 text-terracotta">O que dizem os hóspedes</p>
           <h2 className="font-serif text-3xl font-semibold leading-tight sm:text-5xl">
