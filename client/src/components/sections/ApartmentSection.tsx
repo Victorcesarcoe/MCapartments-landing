@@ -9,7 +9,7 @@ import TourVideo from "@/components/TourVideo";
 import PhotoGallery from "@/components/PhotoGallery";
 import GuestFavoriteBadge from "@/components/GuestFavoriteBadge";
 import AmenityIcon from "@/components/AmenityIcon";
-import { Star, MapPin, Users, BedDouble, Bath, MessageCircle, ExternalLink, Quote, Sparkles } from "lucide-react";
+import { Star, MapPin, Users, BedDouble, Bath, MessageCircle, ExternalLink, Quote, Sparkles, Award, ShieldCheck } from "lucide-react";
 
 type Apt = {
   id: string;
@@ -212,6 +212,17 @@ export default function ApartmentSection({ apt, reversed, theme }: Props) {
               <p className="mt-2 text-sm text-muted-foreground">
                 Direto pelo Airbnb ou fale com o Mauricio no WhatsApp para combinar datas e valores.
               </p>
+              {/* Selo Superhost */}
+              <div className="mt-4 inline-flex items-center gap-2.5 rounded-lg border border-[#1f3328]/15 bg-[#1f3328]/5 px-4 py-2.5">
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#1f3328] shadow-[0_2px_8px_-2px_rgba(31,51,40,0.4)]">
+                  <Award className="h-5 w-5 text-[#d4a853]" />
+                </span>
+                <div className="leading-tight">
+                  <span className="block text-sm font-bold text-[#1f3328]">Airbnb Superhost</span>
+                  <span className="block text-xs text-muted-foreground">Reconhecimento oficial de excelência</span>
+                </div>
+                <ShieldCheck className="ml-1 h-5 w-5 text-[#1f3328]/40" />
+              </div>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <a
