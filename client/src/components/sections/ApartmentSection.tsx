@@ -48,7 +48,8 @@ interface Props {
 }
 
 export default function ApartmentSection({ apt, reversed, theme }: Props) {
-  const bg = theme === "barra" ? "bg-background" : "bg-[#eef5f7]";
+  // Ambos os apartamentos usam o mesmo fundo (bg-background)
+  const bg = "bg-background";
   const accentText = apt.accent === "olive" ? "text-olive" : "text-seablue";
 
   return (
