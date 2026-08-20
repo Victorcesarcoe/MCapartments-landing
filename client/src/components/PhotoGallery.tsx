@@ -105,11 +105,11 @@ export default function PhotoGallery({ photos, accent, shareTitle, shareUrl }: P
         aria-label="Galeria de fotos"
         onKeyDown={handleKey}
       >
-        {/* Foto principal em arco carioca */}
+        {/* Foto principal em arco carioca — moldura moderna com animação hover */}
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="card-lift relative block w-full overflow-hidden rounded-t-[50%] rounded-b-xl border-2 border-card shadow-[0_24px_48px_-24px_rgba(46,74,59,0.45)]"
+          className="group-photo relative block w-full overflow-hidden rounded-t-[50%] rounded-b-2xl border border-foreground/10 shadow-[0_20px_40px_-20px_rgba(46,74,59,0.4)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_28px_52px_-18px_rgba(46,74,59,0.5)]"
           style={{ aspectRatio: "5/4" }}
           aria-label={`Abrir foto: ${photos[index].alt}`}
         >
@@ -119,7 +119,7 @@ export default function PhotoGallery({ photos, accent, shareTitle, shareUrl }: P
             alt={photos[index].alt}
             loading="lazy"
             decoding="async"
-            className="h-full w-full animate-in fade-in duration-300 object-cover"
+            className="h-full w-full animate-in fade-in duration-300 object-cover transition-transform duration-500 ease-out group-hover/photo:scale-[1.035]"
           />
           {/* Contador */}
           <span className="absolute right-4 top-4 rounded-full bg-card/95 px-3.5 py-1.5 text-xs font-semibold text-foreground shadow-sm backdrop-blur-sm">
