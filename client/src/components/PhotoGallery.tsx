@@ -96,6 +96,32 @@ export default function PhotoGallery({ photos, accent, shareTitle, shareUrl }: P
     setShowShare(false);
   };
 
+  const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart({ x: e.touches[0].clientX, y: e.touches[0].clientY });
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!touchStart) return;
+    const dx = e.changedTouches[0].clientX - touchStart.x;
+    const dy = e.changedTouches[0].clientY - touchStart.y;
+    const absDx = Math.abs(dx);
+    const absDy = Math.abs(dy);
+    if (absDx > 50 && absDx > absDy) {
+      if (dx < 0) next(); else prev();
+    }
+    setTouchStart(null);
+  };
+
+  const [zoom, setZoom] = useState(1);
+
+  const handleWheel = (e: React.WheelEvent) => {
+    e.preventDefault();
+    const delta = e.deltaY > 0 ? -0.15 : 0.15;
+    setZoom((z) => Math.min(Math.max(z + delta, 1), 3));
+  };
+
   return (
     <>
       {/* Galeria interativa */}
@@ -121,6 +147,7 @@ export default function PhotoGallery({ photos, accent, shareTitle, shareUrl }: P
             decoding="async"
             className="h-full w-full animate-in fade-in duration-300 object-cover transition-transform duration-500 ease-out group-hover/photo:scale-[1.035]"
           />
+          {/* Overlay de zoom no lightbox — apenas visual */}
           {/* Contador */}
           <span className="absolute right-4 top-4 rounded-full bg-card/95 px-3.5 py-1.5 text-xs font-semibold text-foreground shadow-sm backdrop-blur-sm">
             {index + 1} / {photos.length}
@@ -233,7 +260,7 @@ export default function PhotoGallery({ photos, accent, shareTitle, shareUrl }: P
         </div>
       </div>
 
-      {/* Lightbox com navegação completa */}
+      {/* Lightbox com navegação completa, swipe e zoom */}
       {open && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-palm/90 p-4 backdrop-blur-sm"
@@ -241,6 +268,8 @@ export default function PhotoGallery({ photos, accent, shareTitle, shareUrl }: P
           aria-modal="true"
           aria-label="Visualizador de fotos"
           onClick={() => setOpen(false)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
           <button
             type="button"
@@ -269,8 +298,11 @@ export default function PhotoGallery({ photos, accent, shareTitle, shareUrl }: P
           <img
             src={photos[index].src}
             alt={photos[index].alt}
-            className="max-h-[80vh] max-w-full rounded-xl object-contain shadow-2xl"
+            className="max-h-[80vh] max-w-full rounded-xl object-contain shadow-2xl transition-transform duration-200 ease-out"
+            style={{ transform: `scale(${zoom})` }}
             onClick={(e) => e.stopPropagation()}
+            onWheel={handleWheel}
+            title={zoom > 1 ? "Volte ao normal com o botão X" : "Use a roda do rato para ampliar"}
           />
           {/* Miniaturas no lightbox */}
           <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
