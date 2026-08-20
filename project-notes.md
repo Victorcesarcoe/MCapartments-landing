@@ -57,3 +57,24 @@ para rooms/1400085363404009600; CTA do Apto Copacabana para rooms/96908616926268
 Mapas: pin do Verano Stay agora cai em cima do Condomínio Rio2/Verano Stay (mapa esquerdo)
 e o de Copacabana fica na Av. Atlântica junto ao Posto 5 (mapa direito) — coordenadas exatas.
 Resta: guardar checkpoint e entregar.
+
+## Pedido 20/08 (~20:05): galeria interativa + comodidades destacadas + Host reescrito
+Ficheiros de dados: client/src/lib/data.ts (APT1/APT2 com amenities[].featured e APT1.highlights[])
+Ficheiros de secção: client/src/components/sections/*.tsx; Home.tsx monta tudo.
+Estado:
+- [x] PhotoGallery.tsx: reescrita interativa (setas na foto, contador N/4, miniaturas,
+  barra de progresso, lightbox com miniaturas, navegação teclado).
+- [x] Host.tsx: reescrito sem foto (monograma M em arco), texto personalizado do user
+  (Pousada dos Meros, 4,94/5, 408 avaliações, 7 anos, 100% taxa resposta, citação).
+- [x] Reviews.tsx: reescrito com blocos oficiais Airbnb (nota+estrelas com links) +
+  CTAs "ver avaliações no Airbnb" + muralha.
+- [x] data.ts: APT1.highlights[] + featured em garagem e piscina; APT2 falta highlights.
+Falta:
+- [ ] Adicionar APT2.highlights[] e featured em APT2 amenities (praia, self check-in?)
+- [ ] Usar highlights em ApartmentSection.tsx (barra de destaques acima do vídeo/galeria)
+  e destacar cards featured em amenities (estrela/badge "destaque")
+- [ ] Remover photo do HOST em data.ts se não usado (verificar)
+- [ ] TS check, screenshots, checkpoint, entrega
+WhatsApp: 5521998502505 | Airbnb1: rooms/1400085363404009600 | Airbnb2: rooms/969086169262685020
+Coords: Verano -22.9689832,-43.3877902 | Copa -22.9792834,-43.1893708
+Checkpoint atual: f0bc4d8a

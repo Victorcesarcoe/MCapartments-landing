@@ -9,7 +9,7 @@ import TourVideo from "@/components/TourVideo";
 import PhotoGallery from "@/components/PhotoGallery";
 import GuestFavoriteBadge from "@/components/GuestFavoriteBadge";
 import AmenityIcon from "@/components/AmenityIcon";
-import { Star, MapPin, Users, BedDouble, Bath, MessageCircle, ExternalLink, Quote } from "lucide-react";
+import { Star, MapPin, Users, BedDouble, Bath, MessageCircle, ExternalLink, Quote, Sparkles } from "lucide-react";
 
 type Apt = {
   id: string;
@@ -29,7 +29,8 @@ type Apt = {
   videoUrl: string;
   posterUrl: string;
   gallery: { src: string; alt: string }[];
-  amenities: { icon: string; label: string; detail: string }[];
+  highlights?: string[];
+  amenities: { icon: string; label: string; detail: string; featured?: boolean }[];
   locationTitle: string;
   locationText: string;
   locationPoints: string[];
@@ -122,18 +123,48 @@ export default function ApartmentSection({ apt, reversed, theme }: Props) {
           </div>
         </div>
 
-        {/* Comodidades */}
+        {/* Comodidades em destaque */}
+        {apt.highlights && apt.highlights.length > 0 && (
+          <div className="reveal mt-14">
+            <p className="label-eyebrow mb-6 flex items-center gap-2 text-terracotta">
+              <Sparkles className="h-4 w-4" />
+              Os destaques do {apt.name}
+            </p>
+            <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+              {apt.highlights.map((h) => (
+                <div
+                  key={h}
+                  className="card-lift rounded-2xl border border-terracotta/30 bg-card p-5 shadow-[0_14px_32px_-16px_rgba(180,86,47,0.35)]"
+                >
+                  <Sparkles className={`mb-3 h-5 w-5 ${accentText}`} />
+                  <p className="text-sm font-semibold leading-snug text-foreground">{h}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Comodidades completas */}
         <div className="reveal mt-14">
           <p className="label-eyebrow mb-6 text-terracotta">O que você encontra aqui</p>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
             {apt.amenities.map((a) => (
               <div
                 key={a.label}
-                className="card-lift flex items-start gap-3.5 rounded-xl border border-border bg-card p-4 shadow-sm"
+                className={`card-lift flex items-start gap-3.5 rounded-xl border bg-card p-4 shadow-sm ${
+                  a.featured ? "border-terracotta/40 ring-1 ring-terracotta/15" : "border-border"
+                }`}
               >
                 <AmenityIcon name={a.icon} className="mt-0.5 h-5 w-5 shrink-0 text-terracotta" />
                 <div>
-                  <p className="text-sm font-semibold leading-snug">{a.label}</p>
+                  <p className="flex items-start gap-1.5 text-sm font-semibold leading-snug">
+                    {a.label}
+                    {a.featured && (
+                      <span className="label-eyebrow mt-0.5 rounded-full bg-terracotta/10 px-1.5 py-0.5 text-[9px] text-terracotta">
+                        destaque
+                      </span>
+                    )}
+                  </p>
                   <p className="text-xs text-muted-foreground">{a.detail}</p>
                 </div>
               </div>

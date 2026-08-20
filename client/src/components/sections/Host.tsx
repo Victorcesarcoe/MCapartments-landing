@@ -1,62 +1,114 @@
 /*
- * DESIGN "Aquarela Carioca": secção do anfitrião — retrato em arco carioca,
- * estatísticas como colunas editoriais, fundo areia suave.
+ * DESIGN "Aquarela Carioca": secção do anfitrião reescrita — sem fotografia,
+ * identidade construída em monograma tipográfico (inicial "M" em arco carioca),
+ * estatísticas editoriais em quatro colunas, citação em destaque, fundo areia suave.
  */
-import { HOST } from "@/lib/data";
-import { Award, MessageCircle, Star } from "lucide-react";
+import { Award, MessageCircle, Star, Waves } from "lucide-react";
+
+const STATS = [
+  { value: "4,94", unit: "/ 5", label: "Avaliações", icon: Star },
+  { value: "408", unit: "", label: "Avaliações", icon: MessageCircle },
+  { value: "7", unit: "anos", label: "De experiência em hospedagem", icon: Waves },
+  { value: "100", unit: "%", label: "Taxa de resposta", icon: Award },
+];
 
 export default function Host() {
   return (
     <section id="host" className="bg-sand py-20 lg:py-28">
       <div className="container">
-        <div className="grid items-center gap-12 lg:grid-cols-[5fr_7fr]">
-          {/* Retrato em arco carioca */}
-          <div className="reveal relative mx-auto w-full max-w-sm">
-            <div
-              className="overflow-hidden rounded-t-[50%] rounded-b-2xl border-[6px] border-card shadow-[0_30px_60px_-20px_rgba(46,74,59,0.4)]"
-              style={{ aspectRatio: "4/5" }}
-            >
-              <img src={HOST.photo} alt="Mauricio, anfitrião Superhost" className="h-full w-full object-cover" loading="lazy" />
-            </div>
-            <div className="absolute -bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-3 rounded-full bg-palm px-6 py-3 text-primary-foreground shadow-lg">
-              <Award className="h-5 w-5 text-[#f0c878]" />
-              <span className="label-eyebrow text-sm">Superhost</span>
-            </div>
+        {/* Cabeçalho editorial sem fotografia: monograma "M" em arco */}
+        <div className="reveal mb-12 flex flex-col items-center text-center">
+          <div className="mb-6 flex h-24 w-24 items-center justify-center rounded-t-[50%] rounded-b-2xl bg-palm text-primary-foreground shadow-[0_20px_40px_-16px_rgba(46,74,59,0.5)]">
+            <span className="font-serif text-6xl font-bold leading-none text-[#f0c878]">M</span>
+          </div>
+          <p className="label-eyebrow mb-3 text-terracotta">Conheça seu anfitrião</p>
+          <h2 className="font-serif text-4xl font-semibold leading-tight sm:text-6xl">
+            <em className="text-terracotta">Mauricio</em>
+          </h2>
+          <p className="mt-4 max-w-2xl font-serif text-xl italic text-terracotta/90 sm:text-2xl">
+            Hospitalidade que começa antes da sua chegada.
+          </p>
+        </div>
+
+        <div className="grid gap-12 lg:grid-cols-2">
+          {/* Coluna esquerda: texto de apresentação */}
+          <div className="reveal space-y-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p>
+              Receber pessoas é, para Mauricio, muito mais do que disponibilizar um lugar para ficar. É
+              cuidar dos detalhes, oferecer tranquilidade e fazer com que cada hóspede se sinta
+              verdadeiramente bem-vindo.
+            </p>
+            <p>
+              Com <strong className="text-foreground">7 anos de experiência em hospedagem</strong>, Mauricio
+              construiu sua trajetória com base em um princípio simples:{" "}
+              <strong className="text-foreground">
+                uma boa estadia é feita de conforto, atenção e confiança.
+              </strong>
+            </p>
+            <p>
+              À frente da <strong className="text-foreground">Pousada dos Meros</strong>, sua experiência
+              como anfitrião se traduz em um atendimento próximo, cuidadoso e comprometido com cada etapa
+              da jornada do hóspede — desde o primeiro contato até o momento do check-out.
+            </p>
+            <p>
+              Nascido na década de 80, Mauricio traz para sua forma de receber a experiência de quem
+              entende que cada viagem possui uma história própria. Seja para alguns dias de descanso, uma
+              viagem de negócios ou para descobrir o Rio de Janeiro, seu propósito é tornar a hospedagem{" "}
+              <strong className="text-foreground">simples, confortável e especial</strong>.
+            </p>
+            <blockquote className="border-l-4 border-terracotta pl-5 font-serif text-lg italic text-foreground sm:text-xl">
+              “Meu objetivo é que você chegue como hóspede e vá embora levando uma boa experiência.”
+            </blockquote>
+            <p className="font-semibold text-foreground">Seja bem-vindo. O Rio espera por você.</p>
           </div>
 
-          <div className="reveal mx-auto max-w-xl lg:mx-0 lg:pl-6">
-            <p className="label-eyebrow mb-4 text-terracotta">Seu anfitrião</p>
-            <h2 className="font-serif text-3xl font-semibold leading-tight sm:text-5xl">
-              Oi, eu sou o <em className="text-terracotta">Mauricio</em>
-            </h2>
-            <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Há 7 anos recebo viajantes nos meus apartamentos no Rio — com roupa de cama 100% algodão,
-              check-in sem burocracia e aquela dica boa de carioca que só quem mora aqui conhece. São{" "}
-              <strong className="text-foreground">408 avaliações</strong> e uma média de{" "}
-              <strong className="text-foreground">4,94</strong> que falam por si.
-            </p>
-
-            <div className="mt-8 grid grid-cols-3 divide-x divide-border rounded-2xl border border-border bg-card p-6 shadow-sm">
-              <div className="px-2 text-center">
-                <p className="font-serif text-3xl font-semibold text-terracotta">{HOST.years}</p>
-                <p className="mt-1 text-xs text-muted-foreground">anos hospedando</p>
-              </div>
-              <div className="px-2 text-center">
-                <p className="font-serif text-3xl font-semibold text-terracotta">408</p>
-                <p className="mt-1 text-xs text-muted-foreground">avaliações</p>
-              </div>
-              <div className="px-2 text-center">
-                <p className="font-serif text-3xl font-semibold text-terracotta">4,94</p>
-                <p className="mt-1 flex items-center justify-center gap-1 text-xs text-muted-foreground">
-                  de nota <Star className="h-3.5 w-3.5 fill-[#E5B94B] text-[#E5B94B]" />
-                </p>
-              </div>
+          {/* Coluna direita: estatísticas + Superhost */}
+          <div className="reveal flex flex-col gap-6">
+            <div className="grid grid-cols-2 gap-3">
+              {STATS.map((s) => (
+                <div
+                  key={s.label}
+                  className="card-lift rounded-2xl border border-border bg-card p-6 text-center shadow-sm"
+                >
+                  <s.icon className="mx-auto mb-3 h-5 w-5 text-terracotta" />
+                  <p className="font-serif text-3xl font-semibold text-terracotta">
+                    {s.value}
+                    <span className="text-lg">{s.unit}</span>
+                  </p>
+                  <p className="mt-1 text-xs text-muted-foreground">{s.label}</p>
+                </div>
+              ))}
             </div>
 
-            <p className="mt-6 flex items-center gap-3 text-sm text-muted-foreground">
-              <MessageCircle className="h-5 w-5 shrink-0 text-terracotta" />
-              Respondo rápido no WhatsApp — antes, durante e depois da sua estadia.
-            </p>
+            <div className="card-lift relative overflow-hidden rounded-2xl border border-border bg-palm p-8 text-primary-foreground shadow-sm">
+              <Award className="absolute -right-4 -top-4 h-24 w-24 text-[#f0c878]/20" />
+              <h3 className="mb-3 flex items-center gap-3 font-serif text-2xl font-semibold">
+                <Award className="h-6 w-6 text-[#f0c878]" />
+                Superhost Airbnb
+              </h3>
+              <p className="text-sm leading-relaxed text-primary-foreground/90 sm:text-base">
+                O reconhecimento de <strong className="text-[#f0c878]">Superhost</strong> representa a
+                consistência de um trabalho dedicado à hospitalidade. Superhosts são anfitriões experientes,
+                reconhecidos por suas excelentes avaliações, comunicação eficiente e compromisso em
+                proporcionar experiências de qualidade aos seus hóspedes.
+              </p>
+              <p className="mt-4 text-sm leading-relaxed text-primary-foreground/90 sm:text-base">
+                Para Mauricio, esse reconhecimento não é apenas uma conquista — é um compromisso de
+                continuar oferecendo uma hospedagem cada vez melhor.
+              </p>
+            </div>
+
+            <div className="card-lift rounded-2xl border border-border bg-card p-6 shadow-sm">
+              <h4 className="mb-2 flex items-center gap-2.5 font-serif text-lg font-semibold">
+                <MessageCircle className="h-5 w-5 text-terracotta" />
+                Pode contar comigo
+              </h4>
+              <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+                Com <strong className="text-foreground">100% de taxa de resposta</strong>, Mauricio valoriza
+                uma comunicação clara, rápida e atenciosa. Antes, durante e depois da sua estadia, você
+                terá um anfitrião preparado para ajudar no que for necessário.
+              </p>
+            </div>
           </div>
         </div>
       </div>

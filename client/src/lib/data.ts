@@ -33,9 +33,9 @@ export const APT1 = {
     { src: "/manus-storage/pedra-gavea_c8ef1fec.jpg", alt: "Pedra da Gávea" },
   ],
   amenities: [
-    { icon: "car", label: "Vaga de garagem incluída", detail: "Estacionamento gratuito" },
+    { icon: "car", label: "Vaga de garagem incluída", detail: "Estacionamento gratuito", featured: true },
     { icon: "eye", label: "Vista livre", detail: "Pedra da Gávea e Lagoa, sol da manhã" },
-    { icon: "waves", label: "Piscina", detail: "Condomínio com infraestrutura completa" },
+    { icon: "waves", label: "Piscina", detail: "Condomínio com infraestrutura completa", featured: true },
     { icon: "dumbbell", label: "Academia", detail: "No condomínio" },
     { icon: "flame", label: "Sauna", detail: "No condomínio" },
     { icon: "utensils", label: "Restaurante", detail: "Dentro do condomínio" },
@@ -46,6 +46,8 @@ export const APT1 = {
     { icon: "washing", label: "Máquina de lavar", detail: "No apartamento" },
     { icon: "bed", label: "Roupa de cama 100% algodão", detail: "Conforto de hotel" },
   ],
+  /** Comodidades principais que aparecem em destaque antes do tour em vídeo */
+  highlights: ["Vista para a Pedra da Gávea", "Piscina, sauna e academia no condomínio", "Vaga de garagem gratuita", "Recepção 24h com check-in na portaria"],
   locationTitle: "Localização e vista",
   locationText:
     "No Condomínio Verano Stay, a poucos minutos do Parque Olímpico e da estação do BRT. Amanhecer com sol da manhã e vista livre para a Pedra da Gávea e a Lagoa de Jacarepaguá. Recepção 24h do condomínio: o check-in é feito na portaria, com total segurança.",
@@ -84,8 +86,8 @@ export const APT2 = {
     { src: "/manus-storage/copacabana-aerial_7020a0bc.jpg", alt: "Vista aérea de Copacabana" },
   ],
   amenities: [
-    { icon: "umbrella", label: "Acesso à praia", detail: "Prédio na esquina da praia" },
-    { icon: "key", label: "Self check-in", detail: "Fechadura eletrônica, a qualquer hora" },
+    { icon: "umbrella", label: "Acesso à praia", detail: "Prédio na esquina da praia", featured: true },
+    { icon: "key", label: "Self check-in", detail: "Fechadura eletrônica, a qualquer hora", featured: true },
     { icon: "shield", label: "Portaria 24h", detail: "Segurança o tempo todo" },
     { icon: "tv", label: "TV Smart", detail: "No quarto e na sala" },
     { icon: "wind", label: "Ventiladores de teto", detail: "Brisa do mar no quarto e na sala" },
@@ -105,6 +107,8 @@ export const APT2 = {
   },
   whatsappMessage: "Olá! Tenho interesse no Apto Copacabana, esquina da praia",
   airbnbUrl: "https://www.airbnb.com.br/rooms/969086169262685020",
+  /** Comodidades principais que aparecem em destaque antes do tour em vídeo */
+  highlights: ["Prédio na esquina da praia de Copacabana", "Self check-in com fechadura eletrônica", "Cama king size + sofá-cama", "Portaria 24h com espaço para bagagem"],
 };
 
 export const HOST = {
@@ -112,7 +116,6 @@ export const HOST = {
   years: 7,
   reviewsCount: 408,
   rating: 4.94,
-  photo: "/manus-storage/mauricio-host_b5e6d5bf.jpg",
 };
 
 export const ALL_REVIEWS = [
