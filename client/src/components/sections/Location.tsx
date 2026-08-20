@@ -5,8 +5,8 @@
  */
 import ApartmentMap from "@/components/ApartmentMap";
 
-const BARRA = { lat: -22.9745, lng: -43.3916 }; // Condomínio Verano Stay, Barra Olímpica (aprox.)
-const COPA = { lat: -22.9638, lng: -43.1798 }; // Esquina da praia de Copacabana (aprox.)
+const BARRA = { lat: -22.9689832, lng: -43.3877902 }; // Condomínio Verano Stay, Rua Escultor Sergio Camargo, 50, Barra Olímpica
+const COPA = { lat: -22.9792834, lng: -43.1893708 }; // Esquina da praia de Copacabana
 
 export default function Location() {
   return (

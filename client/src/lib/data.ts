@@ -6,7 +6,7 @@
  * e URLs de vídeos/fotos reais quando disponíveis.
  */
 
-export const WHATSAPP_NUMBER = "5521900000000"; // TODO: substituir pelo número real do Mauricio
+export const WHATSAPP_NUMBER = "5521998502505";
 export const WHATSAPP_BASE = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 export const APT1 = {
@@ -56,7 +56,8 @@ export const APT1 = {
     rating: 5,
   },
   whatsappMessage: "Olá! Tenho interesse no Flat Verano Stay, Barra Olímpica",
-  airbnbUrl: "", // TODO: link real do anúncio no Airbnb
+  airbnbUrl:
+    "https://www.airbnb.com.br/rooms/1400085363404009600?viralityEntryPoint=1&s=76&slug=nhlWjM2y",
 };
 
 export const APT2 = {
@@ -103,7 +104,7 @@ export const APT2 = {
     rating: 5,
   },
   whatsappMessage: "Olá! Tenho interesse no Apto Copacabana, esquina da praia",
-  airbnbUrl: "", // TODO: link real do anúncio no Airbnb
+  airbnbUrl: "https://www.airbnb.com.br/rooms/969086169262685020",
 };
 
 export const HOST = {

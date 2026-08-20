@@ -38,3 +38,22 @@ mapas do DOM mostram o alertdialog de erro. Suspeita do agente debug: problema d
 autenticação/autorização do key passado ao proxy (RefererNotAllowed/InvalidKey).
 A solução robusta: remover dependência do proxy MapView com autenticação e usar mapa
 estático/iframe embed do Google Maps (não requer key do utilizador) em ApartmentMap.
+
+## Dados reais fornecidos pelo utilizador (20/08)
+- WhatsApp: 5521998502505
+- Apt1 (Barra): https://www.airbnb.com.br/rooms/1400085363404009600 — "Flat verano stay barra olímpica! Novo! Clean."
+- Apt2 (Copa): https://www.airbnb.com.br/rooms/969086169262685020 — "Apt reformado! Clean! Cama king! Esquina praia!"
+- Apt1 confirmado: no Condomínio Verano Stay, Barra Olímpica. Apt2 confirmado: esquina da praia de Copacabana (bairro "Praia de Copacabana").
+- Coordenadas: procurar local exato do Condomínio Verano Stay (Barra) e esquina de praia (Copa).
+
+## Coordenadas geocodificadas (Nominatim, 20/08)
+- Verano Stay (Rua Escultor Sergio Camargo, 50, Rio 2, Barra Olímpica): -22.9689832, -43.3877902
+- Copacabana (Av. Atlântica, Copacabana): -22.9792834, -43.1893708 (trecho norte da praia)
+
+## Verificação final (20/08 19:58)
+Todos os links confirmados no browser real: header WhatsApp e CTAs apontam para
+wa.me/5521998502505 com mensagens pré-preenchidas; CTA Airbnb do Flat Verano Stay aponta
+para rooms/1400085363404009600; CTA do Apto Copacabana para rooms/969086169262685020.
+Mapas: pin do Verano Stay agora cai em cima do Condomínio Rio2/Verano Stay (mapa esquerdo)
+e o de Copacabana fica na Av. Atlântica junto ao Posto 5 (mapa direito) — coordenadas exatas.
+Resta: guardar checkpoint e entregar.
