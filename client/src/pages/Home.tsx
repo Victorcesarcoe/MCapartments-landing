@@ -3,7 +3,7 @@
  * Hero (vídeo) → Anfitrião → Verano Stay (Barra) → Copacabana → Avaliações →
  * FAQ → Rodapé CTA + WhatsApp flutuante.
  */
-import { Header, Footer, FloatingWhatsApp } from "@/components/Layout";
+import { Header, Footer, FloatingWhatsApp, BackToTop } from "@/components/Layout";
 import CoastlineDivider from "@/components/CoastlineDivider";
 import Hero from "@/components/sections/Hero";
 import Host from "@/components/sections/Host";
@@ -35,6 +35,7 @@ export default function Home() {
       </main>
       <Footer />
       <FloatingWhatsApp />
+      <BackToTop />
     </div>
   );
 }
