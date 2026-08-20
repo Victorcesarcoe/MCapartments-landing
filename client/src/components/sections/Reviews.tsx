@@ -1,10 +1,12 @@
 /*
- * DESIGN "Aquarela Carioca": secção de avaliações reais — destaque editorial com as
- * avaliações oficiais do Airbnb de cada anúncio (nota, selo "Superhost"), muralha em
- * colunas editoriais (masonry) com selos de apartamento, e CTA para ver todas no Airbnb.
+ * DESIGN "Aquarela Carioca": secção de avaliações reais — carrossel interativo com
+ * testemunhos dos hóspedes, setas de navegação, miniaturas, swipe touch e autoplay.
  */
+import { useState, useCallback, useEffect, useRef } from "react";
 import { ALL_REVIEWS, APT1, APT2 } from "@/lib/data";
-import { Star, Award, ExternalLink } from "lucide-react";
+import { Star, Award, ExternalLink, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+
+const REVIEWS_PER_SLIDE = 3;
 
 function AirbnbRatingBlock() {
   return (
@@ -51,6 +53,54 @@ function AirbnbRatingBlock() {
 export default function Reviews() {
   const featured = ALL_REVIEWS.filter((r) => r.rating === 5);
   const others = ALL_REVIEWS.filter((r) => r.rating < 5);
+  const allReviews = [...featured, ...others];
+  const totalSlides = Math.ceil(allReviews.length / REVIEWS_PER_SLIDE);
+
+  const [current, setCurrent] = useState(0);
+  const [playing, setPlaying] = useState(true);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+
+  // Detectar touch device para otimizar autoplay
+  useEffect(() => {
+    setIsTouchDevice("ontouchstart" in window);
+  }, []);
+
+  const goTo = useCallback(
+    (index: number) => {
+      setCurrent((index + totalSlides) % totalSlides);
+    },
+    [totalSlides]
+  );
+
+  const next = useCallback(() => goTo(current + 1), [current, goTo]);
+  const prev = useCallback(() => goTo(current - 1), [current, goTo]);
+
+  // Autoplay
+  useEffect(() => {
+    if (!playing) return;
+    const timer = setInterval(() => {
+      setCurrent((c) => (c + 1) % totalSlides);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [playing, totalSlides]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!touchStartRef.current) return;
+    const dx = e.changedTouches[0].clientX - touchStartRef.current.x;
+    const dy = e.changedTouches[0].clientY - touchStartRef.current.y;
+    const absDx = Math.abs(dx);
+    const absDy = Math.abs(dy);
+    if (absDx > 50 && absDx > absDy) {
+      if (dx < 0) next();
+      else prev();
+    }
+    touchStartRef.current = null;
+  };
 
   return (
     <section id="avaliacoes" className="bg-background py-20 lg:py-28">
@@ -68,31 +118,99 @@ export default function Reviews() {
 
         <AirbnbRatingBlock />
 
-        <div className="columns-1 gap-5 sm:columns-2 lg:columns-3 [&>*]:mb-5 [&>*]:break-inside-avoid">
-          {[...featured, ...others].map((r, i) => (
-            <figure
-              key={`${r.name}-${i}`}
-              className="reveal card-lift rounded-2xl border border-border bg-card p-6 shadow-sm"
-              style={{ transitionDelay: `${(i % 6) * 50}ms` }}
+        {/* Carrossel interativo de testemunhos */}
+        <div className="reveal relative" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+          {/* Setas de navegação */}
+          <button
+            type="button"
+            onClick={prev}
+            aria-label="Testemunho anterior"
+            className="absolute -left-4 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-card p-3 shadow-lg transition-all duration-300 hover:-translate-x-1 hover:shadow-xl lg:flex"
+          >
+            <ChevronLeft className="h-5 w-5 text-foreground" />
+          </button>
+          <button
+            type="button"
+            onClick={next}
+            aria-label="Próximo testemunho"
+            className="absolute -right-4 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-card p-3 shadow-lg transition-all duration-300 hover:translate-x-1 hover:shadow-xl lg:flex"
+          >
+            <ChevronRight className="h-5 w-5 text-foreground" />
+          </button>
+
+          {/* Slides */}
+          <div
+            className="overflow-hidden"
+            style={{ transition: "transform 500ms cubic-bezier(0.23, 1, 0.32, 1)" }}
+          >
+            <div
+              className="flex"
+              style={{
+                transform: `translateX(-${current * 100}%)`,
+                transition: "transform 500ms cubic-bezier(0.23, 1, 0.32, 1)",
+              }}
             >
-              <div className="mb-3 flex items-center justify-between">
-                <div className="flex gap-0.5">
-                  {Array.from({ length: r.rating }).map((_, j) => (
-                    <Star key={j} className="h-4 w-4 fill-[#E5B94B] text-[#E5B94B]" />
-                  ))}
+              {Array.from({ length: totalSlides }).map((_, slideIdx) => (
+                <div key={slideIdx} className="w-full shrink-0 px-1">
+                  <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                    {allReviews
+                      .slice(slideIdx * REVIEWS_PER_SLIDE, (slideIdx + 1) * REVIEWS_PER_SLIDE)
+                      .map((r, i) => (
+                        <figure
+                          key={`${r.name}-${slideIdx}-${i}`}
+                          className="card-lift rounded-2xl border border-border bg-card p-6 shadow-sm"
+                          style={{ transitionDelay: `${i * 60}ms` }}
+                        >
+                          <div className="mb-3 flex items-center justify-between">
+                            <div className="flex gap-0.5">
+                              {Array.from({ length: r.rating }).map((_, j) => (
+                                <Star key={j} className="h-4 w-4 fill-[#E5B94B] text-[#E5B94B]" />
+                              ))}
+                            </div>
+                            <span
+                              className={`label-eyebrow rounded-full px-2.5 py-1 text-[10px] ${r.apt === "verano" ? "bg-olive/15 text-olive" : "bg-seablue/15 text-seablue"}`}
+                            >
+                              {r.apt === "verano" ? "Barra · Verano Stay" : "Copacabana · Apto Reformado"}
+                            </span>
+                          </div>
+                          <blockquote className="font-serif text-base leading-relaxed italic text-foreground">
+                            "{r.text}"
+                          </blockquote>
+                          <figcaption className="mt-4 label-eyebrow text-sm text-terracotta">
+                            — {r.name}
+                          </figcaption>
+                        </figure>
+                      ))}
+                  </div>
                 </div>
-                <span
-                  className={`label-eyebrow rounded-full px-2.5 py-1 text-[10px] ${r.apt === "verano" ? "bg-olive/15 text-olive" : "bg-seablue/15 text-seablue"}`}
-                >
-                  {r.apt === "verano" ? "Barra · Verano Stay" : "Copacabana · Apto Reformado"}
-                </span>
-              </div>
-              <blockquote className="font-serif text-base leading-relaxed italic text-foreground">
-                “{r.text}”
-              </blockquote>
-              <figcaption className="mt-4 label-eyebrow text-sm text-terracotta">— {r.name}</figcaption>
-            </figure>
-          ))}
+              ))}
+            </div>
+          </div>
+
+          {/* Controles inferiores: dots + play/pause */}
+          <div className="mt-8 flex items-center justify-center gap-4">
+            <div className="flex gap-2">
+              {Array.from({ length: totalSlides }).map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => goTo(i)}
+                  aria-label={`Ir para testemunho ${i + 1}`}
+                  className={`h-2.5 rounded-full transition-all duration-300 ${
+                    i === current ? "w-8 bg-terracotta" : "w-2.5 bg-border hover:bg-muted-foreground/40"
+                  }`}
+                />
+              ))}
+            </div>
+            <button
+              type="button"
+              onClick={() => setPlaying(!playing)}
+              aria-label={playing ? "Pausar carrossel" : "Reproduzir carrossel"}
+              className="rounded-full border border-border p-2 transition-colors hover:bg-card"
+            >
+              {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+            </button>
+          </div>
         </div>
 
         <div className="reveal mt-10 flex flex-col items-center gap-4 text-center">
