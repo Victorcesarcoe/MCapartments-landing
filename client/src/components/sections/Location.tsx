@@ -29,6 +29,27 @@ export default function Location() {
               <span className="mt-1.5 inline-block h-2.5 w-2.5 shrink-0 rounded-full bg-olive" aria-hidden />
               Condomínio Verano Stay, próximo ao Parque Olímpico e à estação do BRT — vista para a Pedra da Gávea.
             </p>
+            <div className="mt-3 rounded-lg border border-paper/15 bg-paper/8 p-4">
+              <p className="mb-2.5 text-xs font-bold uppercase tracking-wider text-paper/60">A pé do apartamento</p>
+              <ul className="space-y-1.5 text-sm text-paper/90">
+                <li className="flex items-center justify-between">
+                  <span>Estação BRT Jardim Sulacap</span>
+                  <span className="font-semibold text-olive">~3 min</span>
+                </li>
+                <li className="flex items-center justify-between">
+                  <span>Parque Olímpico</span>
+                  <span className="font-semibold text-olive">~8 min</span>
+                </li>
+                <li className="flex items-center justify-between">
+                  <span>VillageMall</span>
+                  <span className="font-semibold text-olive">~10 min</span>
+                </li>
+                <li className="flex items-center justify-between">
+                  <span>Praia da Reserva</span>
+                  <span className="font-semibold text-olive">~5 min (carro)</span>
+                </li>
+              </ul>
+            </div>
           </div>
           <div className="reveal relative">
             <ApartmentMap lat={COPA.lat} lng={COPA.lng} label="Apto Copacabana · Esquina da Praia" accent="seablue" />
@@ -36,6 +57,27 @@ export default function Location() {
               <span className="mt-1.5 inline-block h-2.5 w-2.5 shrink-0 rounded-full bg-seablue" aria-hidden />
               Prédio na esquina da praia de Copacabana — você sai do elevador e está no calçadão.
             </p>
+            <div className="mt-3 rounded-lg border border-paper/15 bg-paper/8 p-4">
+              <p className="mb-2.5 text-xs font-bold uppercase tracking-wider text-paper/60">A pé do apartamento</p>
+              <ul className="space-y-1.5 text-sm text-paper/90">
+                <li className="flex items-center justify-between">
+                  <span>Praia e calçadão de Copacabana</span>
+                  <span className="font-semibold text-seablue">~1 min</span>
+                </li>
+                <li className="flex items-center justify-between">
+                  <span>Metrô Siqueira Campos</span>
+                  <span className="font-semibold text-seablue">~8 min</span>
+                </li>
+                <li className="flex items-center justify-between">
+                  <span>Forte de Copacabana</span>
+                  <span className="font-semibold text-seablue">~10 min</span>
+                </li>
+                <li className="flex items-center justify-between">
+                  <span>Posto 5</span>
+                  <span className="font-semibold text-seablue">~3 min</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

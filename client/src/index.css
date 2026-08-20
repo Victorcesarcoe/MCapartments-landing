@@ -151,6 +151,23 @@
 }
 
 @layer components {
+  /* Animação suave de entrada para tooltips (desktop e mobile) */
+  @keyframes tooltip-enter {
+    from {
+      opacity: 0;
+      transform: translateY(4px) scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Garantir que o tooltip também aparece em touch (mobile) — o Radix Tooltip já suporta,
+     mas adicionamos uma animação mais suave e visível para confirmação visual */
+  [data-radix-tooltip-content] {
+    animation: tooltip-enter 0.25s cubic-bezier(0.23, 1, 0.32, 1) both;
+  }
   .container {
     width: 100%;
     margin-left: auto;
