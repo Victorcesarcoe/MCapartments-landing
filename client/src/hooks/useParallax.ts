@@ -2,18 +2,37 @@
  * DESIGN "Aquarela Carioca": hook de parallax suave — aplica translate-Y
  * às imagens de fundo conforme o scroll, criando sensação de profundidade.
  * Usa requestAnimationFrame para performance e respeita prefers-reduced-motion.
+ * Também implementa lazy loading: a imagem só é renderizada quando entra no viewport.
  */
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 
 /**
  * Hook que aplica parallax a um elemento com imagem de fundo.
  * @param speed - fator de velocidade do parallax (0.1 a 0.5, mais alto = mais movimento)
- * @returns ref para o elemento de fundo
+ * @returns objeto com ref do elemento de fundo e flag `visible` (lazy load)
  */
 export function useParallax(speed = 0.25) {
   const bgRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number>(0);
   const prefersReduced = useRef<boolean>(false);
+  const [visible, setVisible] = useState(false);
+
+  // Lazy loading: só renderiza o conteúdo quando o fundo entra no viewport
+  useEffect(() => {
+    const el = bgRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "300px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   const update = useCallback(() => {
     const el = bgRef.current;
@@ -49,5 +68,5 @@ export function useParallax(speed = 0.25) {
     };
   }, [update]);
 
-  return bgRef;
+  return { bgRef, visible };
 }

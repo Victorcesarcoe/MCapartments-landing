@@ -4,6 +4,7 @@
  */
 import { useState, useCallback, useEffect, useRef, useMemo } from "react";
 import { ALL_REVIEWS, APT1, APT2, type ReviewSort } from "@/lib/data";
+import { useParallax } from "@/hooks/useParallax";
 import { Star, Award, ExternalLink, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 
 
@@ -56,6 +57,7 @@ export default function Reviews() {
   const [playing, setPlaying] = useState(true);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [sort, setSort] = useState<ReviewSort>("recent");
+  const { bgRef, visible } = useParallax(0.12);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
 
   // Ordenar reviews
@@ -119,16 +121,22 @@ export default function Reviews() {
 
   return (
     <section id="avaliacoes" className="relative overflow-hidden bg-background py-20 lg:py-28">
-      {/* Fundo decorativo com parallax */}
+      {/* Fundo decorativo com parallax + lazy load */}
       <div
+        ref={bgRef}
         className="pointer-events-none absolute inset-0"
         aria-hidden
+        style={{ transform: "translateY(0) scale(1.05)" }}
       >
-        <img
-          src="/manus-storage/copacabana-beach_83f6ed90.jpg"
-          alt=""
-          className="h-full w-full object-cover opacity-[0.04]"
-        />
+        {visible && (
+          <img
+            src="/manus-storage/copacabana-beach_83f6ed90.jpg"
+            alt=""
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover opacity-[0.04]"
+          />
+        )}
       </div>
       <div className="container relative z-10">
         <div className="reveal mb-6 max-w-2xl">

@@ -32,22 +32,27 @@ export default function Faq() {
 
   const totalResults = filteredGroups.reduce((acc, g) => acc + g.items.length, 0);
 
-  const bgRef = useParallax(0.12);
+  const { bgRef, visible } = useParallax(0.12);
 
   return (
     <section id="faq" className="relative overflow-hidden bg-sand py-20 lg:py-28">
       {/* Fundo decorativo com parallax */}
+      {/* Fundo decorativo com parallax + lazy load */}
       <div
         ref={bgRef}
         className="pointer-events-none absolute inset-0"
         aria-hidden
         style={{ transform: "translateY(0) scale(1.05)" }}
       >
-        <img
-          src="/manus-storage/hero-rio_4f1073a1.jpg"
-          alt=""
-          className="h-full w-full object-cover opacity-[0.03]"
-        />
+        {visible && (
+          <img
+            src="/manus-storage/hero-rio_4f1073a1.jpg"
+            alt=""
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover opacity-[0.03]"
+          />
+        )}
       </div>
       <div className="container relative z-10 grid gap-12 lg:grid-cols-[4fr_8fr]">
         <div className="reveal lg:sticky lg:top-24 lg:self-start">

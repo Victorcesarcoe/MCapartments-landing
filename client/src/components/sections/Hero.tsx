@@ -19,14 +19,26 @@ function scrollTo(id: string) {
 }
 
 export default function Hero() {
-  const bgRef = useParallax(0.15);
+  const { bgRef, visible } = useParallax(0.15);
 
   return (
     <section id="hero" className="relative flex min-h-[92vh] items-end overflow-hidden">
-      {/* Vídeo de fundo com poster + parallax */}
+      {/* Animações de fade-in ao carregar */}
+      <style>{`
+        @keyframes heroFadeIn {
+          from { opacity: 0; transform: translateY(24px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-fade-in { animation: heroFadeIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) both; }
+        .hero-delay-1 { animation-delay: 0.15s; }
+        .hero-delay-2 { animation-delay: 0.3s; }
+        .hero-delay-3 { animation-delay: 0.45s; }
+        .hero-delay-4 { animation-delay: 0.6s; }
+      `}</style>
+      {/* Vídeo de fundo com poster + parallax + lazy load */}
       <div className="absolute inset-0">
         <div ref={bgRef} className="absolute inset-0 will-change-transform transition-transform duration-100 ease-out" style={{ transform: "translateY(0) scale(1.05)" }}>
-        {HERO_VIDEO ? (
+        {visible && HERO_VIDEO ? (
           <video
             className="h-full w-full object-cover"
             autoPlay
@@ -50,19 +62,19 @@ export default function Hero() {
 
       <div className="container relative z-10 pb-24 pt-36">
         <div className="max-w-3xl">
-          <p className="label-eyebrow mb-5 flex items-center gap-3 text-[#f0d9c0]">
+          <p className="hero-fade-in hero-delay-1 label-eyebrow mb-5 flex items-center gap-3 text-[#f0d9c0]">
             <span className="inline-block h-px w-12 bg-[#f0d9c0]/70" aria-hidden />
             Superhost · 7 anos hospedando
           </p>
-          <h1 className="font-serif text-4xl leading-[1.05] font-semibold text-paper sm:text-6xl lg:text-7xl">
+          <h1 className="hero-fade-in hero-delay-2 font-serif text-4xl leading-[1.05] font-semibold text-paper sm:text-6xl lg:text-7xl">
             Viva o Rio. <em className="text-[#efc4a3]">Hospede-se com confiança.</em>
           </h1>
-          <p className="mt-6 max-w-xl text-base text-paper/85 sm:text-lg">
+          <p className="hero-fade-in hero-delay-3 mt-6 max-w-xl text-base text-paper/85 sm:text-lg">
             Duas experiências cuidadosamente preparadas para você: a energia de <strong className="text-paper">Copacabana</strong> ou o
             conforto da <strong className="text-paper">Barra Olímpica</strong> — 408 avaliações e nota <strong className="text-[#f0d9c0]">4,94</strong>.
           </p>
 
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <div className="hero-fade-in hero-delay-4 mt-10 flex flex-col gap-4 sm:flex-row">
             <button
               type="button"
               onClick={() => scrollTo("verano-stay")}
@@ -79,7 +91,7 @@ export default function Hero() {
             </button>
           </div>
 
-          <div className="mt-12 flex items-center gap-6 text-paper/80">
+          <div className="hero-fade-in hero-delay-4 mt-12 flex items-center gap-6 text-paper/80">
             <div className="flex -space-x-2">
               {["#f0d9c0", "#cde0e8", "#d8c9a8"].map((c, i) => (
                 <span key={i} className="h-8 w-8 rounded-full border-2 border-[#1f3328]" style={{ background: c }} aria-hidden />
