@@ -55,7 +55,7 @@ export default function TourVideo({ videoUrl, posterUrl, alt, accent }: TourVide
   return (
     <div
       ref={containerRef}
-      className="relative overflow-hidden rounded-t-[50%] rounded-b-2xl border-4 border-card shadow-[0_24px_60px_-18px_rgba(46,74,59,0.35)]"
+      className="video-tour-object relative overflow-hidden rounded-t-[50%] rounded-b-2xl border-[3px] border-card shadow-[0_28px_70px_-20px_rgba(46,74,59,0.46)]"
     >
       {/* Moldura de arco carioca */}
       <div className={`absolute inset-x-0 top-0 h-2 ${accentBg} opacity-90`} aria-hidden />
@@ -84,7 +84,7 @@ export default function TourVideo({ videoUrl, posterUrl, alt, accent }: TourVide
           />
           {/* Indicador de play sobre o poster */}
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-palm/25">
-            <div className={`flex h-20 w-20 items-center justify-center rounded-full ${accentBg} shadow-lg`}>
+              <div className={`flex h-20 w-20 items-center justify-center rounded-full ${accentBg} shadow-[0_10px_30px_-8px_rgba(31,51,40,0.55)] ring-4 ring-paper/35 transition-transform duration-300 hover:scale-105`}>
               <Play className="h-8 w-8 text-primary-foreground" fill="currentColor" />
             </div>
           </div>
@@ -96,7 +96,7 @@ export default function TourVideo({ videoUrl, posterUrl, alt, accent }: TourVide
           type="button"
           onClick={toggleMute}
           aria-label={muted ? "Ativar som" : "Desativar som"}
-          className="btn-press absolute bottom-4 right-4 flex h-11 w-11 items-center justify-center rounded-full bg-foreground/80 text-primary-foreground backdrop-blur-sm"
+            className="btn-press absolute bottom-4 right-4 flex h-11 w-11 items-center justify-center rounded-full border border-paper/30 bg-palm/85 text-paper backdrop-blur-sm transition-colors hover:bg-terracotta"
         >
           {muted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
         </button>

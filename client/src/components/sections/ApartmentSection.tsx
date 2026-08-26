@@ -1,8 +1,8 @@
 /*
  * DESIGN "Aquarela Carioca": bloco de apartamento em grid assimétrico 7/5 —
  * vídeo-tour em destaque (moldura de arco), selo "Preferido dos hóspedes" como carimbo,
- * grid de comodidades, bloco de localização, depoimento e CTA duplo (Airbnb + WhatsApp).
- * Verano Stay: fundo off-white; Copacabana: fundo azul-suíço muito suave.
+ * notas de viagem, comodidades, bloco de localização, depoimento e CTA duplo.
+ * Revisão: o vídeo é a âncora; dados secundários usam superfícies editoriais de papel.
  */
 import { APT1, APT2, WHATSAPP_BASE } from "@/lib/data";
 import TourVideo from "@/components/TourVideo";
@@ -53,11 +53,12 @@ export default function ApartmentSection({ apt, reversed, theme }: Props) {
   const accentText = apt.accent === "olive" ? "text-olive" : "text-seablue";
 
   return (
-    <section id={apt.id} className={`${bg} py-20 lg:py-28`}>
+    <section id={apt.id} className={`relative ${bg} py-20 lg:py-28`}>
       <div className="container">
         {/* Cabeçalho do apartamento */}
         <div className="reveal mb-12 grid gap-6 lg:grid-cols-[7fr_5fr] lg:items-end">
           <div className={reversed ? "lg:order-2 lg:pl-10" : "lg:pr-10"}>
+            <p className="editorial-rule label-eyebrow mb-3 text-[10px]">Capítulo {theme === "barra" ? "01" : "02"}</p>
             <p className="label-eyebrow mb-3 flex items-center gap-2 text-terracotta">
               <MapPin className="h-4 w-4" />
               {apt.neighborhood} · Rio de Janeiro
@@ -81,19 +82,27 @@ export default function ApartmentSection({ apt, reversed, theme }: Props) {
         {/* Vídeo + galeria (assimetria 7/5) */}
         <div className={`grid gap-8 lg:grid-cols-[7fr_5fr] ${reversed ? "lg:[&>*:first-child]:order-2" : ""}`}>
           <div className="reveal order-1">
-            <p className="label-eyebrow mb-4 text-terracotta">Tour em vídeo</p>
-            <TourVideo
-              videoUrl={apt.videoUrl}
-              posterUrl={apt.posterUrl}
-              alt={`Tour em vídeo pelo ${apt.name} em ${apt.neighborhood}`}
-              accent={apt.accent}
-            />
+            <div className="video-stage">
+              <div className="mb-4 flex items-center justify-between gap-4">
+                <p className="editorial-rule label-eyebrow text-[10px]">Comece por aqui</p>
+                <span className="label-eyebrow text-[10px] text-muted-foreground">Tour visual</span>
+              </div>
+              <TourVideo
+                videoUrl={apt.videoUrl}
+                posterUrl={apt.posterUrl}
+                alt={`Tour em vídeo pelo ${apt.name} em ${apt.neighborhood}`}
+                accent={apt.accent}
+              />
+              <p className="mt-4 max-w-md font-serif text-base italic leading-relaxed text-muted-foreground">
+                Veja primeiro a luz, os detalhes e a atmosfera de onde você vai ficar.
+              </p>
+            </div>
           </div>
-          <div className="reveal order-2">
-            <p className="label-eyebrow mb-4 text-terracotta">Fotos</p>
+          <div className="reveal order-2 pt-5 lg:pt-14">
+            <p className="editorial-rule label-eyebrow mb-4 text-[10px]">Fotos de apoio</p>
             <PhotoGallery photos={apt.gallery} accent={apt.accent} shareTitle={apt.name} shareUrl={apt.airbnbUrl} />
             {/* Ficha rápida */}
-            <div className="mt-6 grid grid-cols-2 gap-3 rounded-2xl border border-border bg-card p-5 shadow-sm sm:grid-cols-4">
+            <div className="paper-surface mt-6 grid grid-cols-2 gap-3 p-5 sm:grid-cols-4">
               <div className="flex items-center gap-2.5">
                 <Users className="h-5 w-5 shrink-0 text-terracotta" />
                 <div>
@@ -137,7 +146,7 @@ export default function ApartmentSection({ apt, reversed, theme }: Props) {
               {apt.highlights.map((h) => (
                 <div
                   key={h}
-                  className="card-lift rounded-2xl border border-terracotta/30 bg-card p-5 shadow-[0_14px_32px_-16px_rgba(180,86,47,0.35)]"
+                  className="card-lift paper-surface p-5 shadow-[0_14px_32px_-16px_rgba(180,86,47,0.25)]"
                 >
                   <Sparkles className={`mb-3 h-5 w-5 ${accentText}`} />
                   <p className="text-sm font-semibold leading-snug text-foreground">{h}</p>
@@ -154,8 +163,8 @@ export default function ApartmentSection({ apt, reversed, theme }: Props) {
             {apt.amenities.map((a) => (
               <div
                 key={a.label}
-                className={`card-lift flex items-start gap-3.5 rounded-xl border bg-card p-4 shadow-sm ${
-                  a.featured ? "border-terracotta/40 ring-1 ring-terracotta/15" : "border-border"
+                className={`card-lift flex items-start gap-3.5 border-b border-border/80 py-4 pr-3 transition-colors hover:border-terracotta/50 ${
+                  a.featured ? "border-l-2 border-terracotta bg-terracotta/5 pl-3" : "pl-1"
                 }`}
               >
                 <AmenityIcon name={a.icon} className="mt-0.5 h-5 w-5 shrink-0 text-terracotta" />
@@ -191,7 +200,7 @@ export default function ApartmentSection({ apt, reversed, theme }: Props) {
             </ul>
           </div>
           <div className={`reveal ${reversed ? "lg:order-1" : ""}`}>
-            <blockquote className="card-lift relative rounded-2xl border border-border bg-card p-8 shadow-sm">
+            <blockquote className="review-sheet card-lift relative p-8">
               <Quote className={`absolute right-6 top-6 h-10 w-10 ${accentText} opacity-30`} />
               <div className="mb-3 flex gap-0.5">
                 {Array.from({ length: apt.review.rating }).map((_, i) => (
@@ -205,7 +214,7 @@ export default function ApartmentSection({ apt, reversed, theme }: Props) {
         </div>
 
         {/* CTAs */}
-        <div className="reveal mt-14 rounded-3xl border border-border bg-card p-8 shadow-[0_20px_50px_-24px_rgba(46,74,59,0.35)] lg:p-10">
+        <div className="reveal cta-band mt-14 p-8 lg:p-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <h3 className="font-serif text-2xl font-semibold sm:text-3xl">
@@ -266,7 +275,7 @@ export default function ApartmentSection({ apt, reversed, theme }: Props) {
                 href={apt.calendarUrl || apt.airbnbUrl || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-press inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#1f3328] bg-transparent px-7 py-4 font-semibold text-[#1f3328] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#1f3328] hover:text-paper hover:shadow-[0_10px_28px_-8px_rgba(31,51,40,0.55)]"
+                className="btn-press inline-flex items-center justify-center gap-2 rounded-full border-2 border-terracotta bg-transparent px-7 py-4 font-semibold text-terracotta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-terracotta hover:text-primary-foreground hover:shadow-[0_10px_28px_-8px_rgba(180,86,47,0.45)]"
               >
                 <ExternalLink className="h-4.5 w-4.5" />
                 Ver Disponibilidade

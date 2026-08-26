@@ -1,6 +1,7 @@
 /*
  * DESIGN "Aquarela Carioca" — Landing page single-page:
  * Hero (vídeo) → Anfitrião → Verano Stay (Barra) → Copacabana → Avaliações →
+ * Sistema visual: Aquarela Editorial Circulante — vídeo protagonista, superfícies de papel e assinatura de Mauricio.
  * FAQ → Rodapé CTA + WhatsApp flutuante.
  */
 import { Header, Footer, FloatingWhatsApp, BackToTop } from "@/components/Layout";
@@ -27,7 +28,7 @@ export default function Home() {
         <Host />
         <CoastlineDivider color="#faf6f0" strokeColor="#c9b994" />
         <ApartmentSection apt={APT1} theme="barra" />
-        <CoastlineDivider color="#eef5f7" strokeColor="#7ba7bc" />
+        <CoastlineDivider color="#faf6f0" strokeColor="#c9b994" />
         <ApartmentSection apt={APT2} reversed theme="copa" />
         <CoastlineDivider color="#e8dfd0" strokeColor="#c9b994" />
         <Reviews />

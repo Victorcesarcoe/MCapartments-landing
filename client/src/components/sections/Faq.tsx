@@ -55,7 +55,8 @@ export default function Faq() {
         )}
       </div>
       <div className="container relative z-10 grid gap-12 lg:grid-cols-[4fr_8fr]">
-        <div className="reveal lg:sticky lg:top-24 lg:self-start">
+        <div className="paper-surface reveal p-6 lg:sticky lg:top-24 lg:self-start lg:p-8">
+          <p className="editorial-rule label-eyebrow mb-4 text-[10px]">Nota do Mauricio</p>
           <p className="label-eyebrow mb-4 text-terracotta">Dúvidas frequentes</p>
           <h2 className="font-serif text-3xl font-semibold leading-tight sm:text-4xl">
             Antes de reservar, <em className="text-terracotta">o essencial</em>
@@ -63,6 +64,9 @@ export default function Faq() {
           <p className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
             <HelpCircle className="h-4.5 w-4.5 text-terracotta" />
             Qualquer outra dúvida, é só chamar o Mauricio no WhatsApp.
+          </p>
+          <p className="mt-8 border-t border-border/70 pt-4 font-serif text-lg italic leading-relaxed text-terracotta/90">
+            “Prefiro que você reserve sentindo que já sabe como será chegar.”
           </p>
         </div>
         <div className="reveal space-y-10">
@@ -74,7 +78,7 @@ export default function Faq() {
               placeholder="Pesquisar perguntas…"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="w-full rounded-2xl border border-border bg-card py-3.5 pl-11 pr-10 text-sm shadow-sm outline-none transition-all duration-200 placeholder:text-muted-foreground/60 focus:border-terracotta/40 focus:ring-2 focus:ring-terracotta/10"
+              className="w-full rounded-[0.25rem_1rem_1rem_1rem] border border-border/80 bg-card/70 py-3.5 pl-11 pr-10 text-sm shadow-none outline-none transition-all duration-200 placeholder:text-muted-foreground/60 focus:border-terracotta/60 focus:ring-2 focus:ring-terracotta/10"
               aria-label="Pesquisar perguntas do FAQ"
             />
             {q && (
@@ -99,7 +103,7 @@ export default function Faq() {
             if (items.length === 0) return null;
             return (
               <div key={group.category}>
-                <h3 className="mb-4 flex items-center gap-2.5 font-serif text-xl font-semibold">
+                <h3 className="editorial-rule mb-4 flex items-center gap-2.5 font-serif text-xl font-semibold">
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-terracotta/10">
                     <Icon className="h-4.5 w-4.5 text-terracotta" />
                   </span>
@@ -110,7 +114,7 @@ export default function Faq() {
                     <AccordionItem
                       key={`${group.category}-${i}`}
                       value={`faq-${group.category}-${i}`}
-                      className="rounded-2xl border border-border bg-card px-6 shadow-sm transition-all duration-300 ease-out data-[state=open]:shadow-md data-[state=open]:border-terracotta/30"
+                      className="faq-sheet border border-border/70 px-6 shadow-none transition-all duration-300 ease-out data-[state=open]:border-terracotta/50 data-[state=open]:shadow-[0_14px_28px_-22px_rgba(180,86,47,0.48)]"
                     >
                       <AccordionTrigger
                         className="py-5 text-left font-serif text-base font-semibold transition-colors duration-300 hover:no-underline hover:text-terracotta sm:text-lg"
@@ -131,7 +135,7 @@ export default function Faq() {
 
       {/* CTA Fale Connosco */}
       <div className="container reveal mt-16">
-        <div className="flex flex-col items-center justify-center gap-4 rounded-3xl border border-border bg-card px-8 py-10 shadow-sm">
+        <div className="cta-band flex flex-col items-center justify-center gap-4 px-8 py-10">
           <p className="font-serif text-xl font-semibold sm:text-2xl">Ainda tem dúvidas?</p>
           <p className="max-w-md text-center text-sm text-muted-foreground">
             O Mauricio responde rapidamente no WhatsApp — antes, durante e depois da sua estadia.

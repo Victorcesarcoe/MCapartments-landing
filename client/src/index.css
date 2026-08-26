@@ -306,6 +306,165 @@
     }
   }
 
+  /* Sistema editorial da revisão design-taste: superfícies de papel, notas de viagem e assinatura. */
+  .paper-surface {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid oklch(0.88 0.02 80 / 0.92);
+    border-radius: 1rem 1rem 1rem 0.25rem;
+    background-color: var(--card);
+    background-image:
+      radial-gradient(circle at 12% 8%, oklch(0.55 0.13 40 / 0.07) 0 1px, transparent 1.5px),
+      radial-gradient(circle at 88% 92%, oklch(0.38 0.06 160 / 0.06) 0 1px, transparent 1.5px),
+      linear-gradient(135deg, oklch(1 0 0 / 0.35), transparent 56%);
+    background-size: 18px 18px, 22px 22px, 100% 100%;
+  }
+
+  .paper-surface > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .paper-surface::after {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    content: "";
+    opacity: 0.26;
+    background: repeating-linear-gradient(0deg, transparent 0 8px, oklch(0.38 0.06 160 / 0.025) 8px 9px);
+  }
+
+  .editorial-rule {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--terracotta);
+  }
+
+  .editorial-rule::after {
+    width: min(12rem, 28vw);
+    height: 1px;
+    content: "";
+    background: currentColor;
+    opacity: 0.4;
+  }
+
+  .brand-signature {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    letter-spacing: -0.02em;
+  }
+
+  .brand-signature-mark {
+    display: grid;
+    place-items: center;
+    width: 2.85rem;
+    height: 3.25rem;
+    border: 1px solid oklch(0.975 0.01 85 / 0.42);
+    border-radius: 50% 50% 0.85rem 0.85rem;
+    color: #f0c878;
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .video-tour-object {
+      transition:
+        transform 360ms var(--ease-out-snap),
+        box-shadow 360ms var(--ease-out-snap);
+    }
+
+    .video-tour-object:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 34px 76px -22px oklch(0.38 0.06 160 / 0.5);
+    }
+  }
+
+  .video-stage {
+    position: relative;
+    padding: 0.75rem 0.75rem 0;
+    border: 1px solid oklch(0.38 0.06 160 / 0.12);
+    border-radius: 1.35rem 1.35rem 1.35rem 0.25rem;
+    background: linear-gradient(145deg, oklch(0.975 0.01 85 / 0.7), oklch(0.93 0.02 80 / 0.52));
+    box-shadow: 0 24px 52px -24px oklch(0.38 0.06 160 / 0.28);
+  }
+
+  .video-stage::before {
+    position: absolute;
+    top: 0.45rem;
+    left: 0.9rem;
+    width: 2.75rem;
+    height: 1px;
+    content: "";
+    background: var(--terracotta);
+    opacity: 0.72;
+  }
+
+  .video-stage > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .review-sheet {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid oklch(0.88 0.02 80 / 0.92);
+    border-radius: 1rem 1rem 1rem 0.25rem;
+    background: var(--card);
+    box-shadow: 0 18px 36px -24px oklch(0.38 0.06 160 / 0.42);
+  }
+
+  .review-sheet::after {
+    position: absolute;
+    right: 1.25rem;
+    bottom: 1rem;
+    width: 2.5rem;
+    height: 1px;
+    content: "";
+    background: var(--terracotta);
+    opacity: 0.65;
+  }
+
+  .faq-sheet {
+    border-left: 3px solid oklch(0.55 0.13 40 / 0.32);
+    border-radius: 0.25rem 1rem 1rem 1rem;
+    background: linear-gradient(110deg, oklch(0.995 0.005 85 / 0.92), oklch(0.975 0.01 85 / 0.74));
+    box-shadow: 0 10px 28px -22px oklch(0.38 0.06 160 / 0.42);
+  }
+
+  .cta-band {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid oklch(0.55 0.13 40 / 0.22);
+    border-radius: 1.25rem 1.25rem 1.25rem 0.25rem;
+    background: linear-gradient(115deg, oklch(0.995 0.005 85), oklch(0.93 0.02 80 / 0.65));
+    box-shadow: 0 20px 42px -28px oklch(0.55 0.13 40 / 0.38);
+  }
+
+  .cta-band::before {
+    position: absolute;
+    top: 1.1rem;
+    right: 1.25rem;
+    width: 4rem;
+    height: 4rem;
+    border: 1px solid oklch(0.55 0.13 40 / 0.22);
+    border-radius: 50%;
+    content: "";
+  }
+
+  .accent-link {
+    border-color: oklch(0.55 0.13 40 / 0.5);
+    color: var(--terracotta);
+  }
+
+  .accent-link:hover {
+    background: oklch(0.55 0.13 40 / 0.08);
+    border-color: var(--terracotta);
+  }
+
   /* Anel de pulsação do botão flutuante de WhatsApp */
   @keyframes pulse-ring {
     0% {

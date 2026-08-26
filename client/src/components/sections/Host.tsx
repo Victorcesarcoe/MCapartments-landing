@@ -18,10 +18,10 @@ export default function Host() {
       <div className="container">
         {/* Cabeçalho editorial sem fotografia: monograma "M" em arco */}
         <div className="reveal mb-12 flex flex-col items-center text-center">
-          <div className="mb-6 flex h-24 w-24 items-center justify-center rounded-t-[50%] rounded-b-2xl bg-palm text-primary-foreground shadow-[0_20px_40px_-16px_rgba(46,74,59,0.5)]">
-            <span className="font-serif text-6xl font-bold leading-none text-[#f0c878]">M</span>
+          <div className="brand-signature-mark mb-6 !h-24 !w-24 !rounded-t-[50%] !rounded-b-2xl !border-0 bg-palm !text-6xl shadow-[0_20px_40px_-16px_rgba(46,74,59,0.5)]">
+            M
           </div>
-          <p className="label-eyebrow mb-3 text-terracotta">Conheça seu anfitrião</p>
+          <p className="label-eyebrow mb-3 text-terracotta">Conheça seu anfitrião · Mauricio · Rio stays</p>
           <h2 className="font-serif text-4xl font-semibold leading-tight sm:text-6xl">
             <em className="text-terracotta">Mauricio</em>
           </h2>
@@ -68,7 +68,7 @@ export default function Host() {
               {STATS.map((s, i) => (
                 <div
                   key={`stat-${i}`}
-                  className="card-lift rounded-2xl border border-border bg-card p-6 text-center shadow-sm"
+                  className="card-lift paper-surface p-6 text-center"
                 >
                   <s.icon className="mx-auto mb-3 h-5 w-5 text-terracotta" />
                   <p className="font-serif text-3xl font-semibold text-terracotta">
@@ -80,7 +80,7 @@ export default function Host() {
               ))}
             </div>
 
-            <div className="card-lift relative overflow-hidden rounded-2xl border border-border bg-palm p-8 text-primary-foreground shadow-sm">
+            <div className="card-lift relative overflow-hidden rounded-[1rem_1rem_1rem_0.25rem] border border-palm/20 bg-palm p-8 text-primary-foreground shadow-[0_20px_42px_-22px_rgba(46,74,59,0.7)]">
               <Award className="absolute -right-4 -top-4 h-24 w-24 text-[#f0c878]/20" />
               <h3 className="mb-3 flex items-center gap-3 font-serif text-2xl font-semibold">
                 <Award className="h-6 w-6 text-[#f0c878]" />
@@ -98,7 +98,7 @@ export default function Host() {
               </p>
             </div>
 
-            <div className="card-lift rounded-2xl border border-border bg-card p-6 shadow-sm">
+            <div className="card-lift paper-surface p-6">
               <h4 className="mb-2 flex items-center gap-2.5 font-serif text-lg font-semibold">
                 <MessageCircle className="h-5 w-5 text-terracotta" />
                 Pode contar comigo

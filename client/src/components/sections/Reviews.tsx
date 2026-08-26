@@ -19,7 +19,7 @@ function AirbnbRatingBlock() {
           href={apt.airbnbUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="card-lift reveal stagger-1 group flex items-center gap-5 rounded-3xl border border-border bg-card p-6 shadow-sm"
+          className={`review-sheet card-lift reveal stagger-1 group flex items-center gap-5 p-6 ${idx === 0 ? "rotate-[0.45deg]" : "-rotate-[0.45deg]"}`}
           style={{ transitionDelay: `${idx * 120}ms` }}
         >
           <div
@@ -154,7 +154,7 @@ export default function Reviews() {
         <AirbnbRatingBlock />
 
         {/* Resumo da classificação média */}
-        <div className="reveal stagger-2 mb-8 flex flex-wrap items-center justify-center gap-8 rounded-3xl border border-border bg-card px-8 py-6 shadow-sm">
+        <div className="paper-surface reveal stagger-2 mb-8 flex flex-wrap items-center justify-center gap-8 px-8 py-6">
           {[APT1, APT2].map((apt) => (
             <div key={apt.id} className="flex items-center gap-4">
               <span className="font-serif text-4xl font-bold text-terracotta">
@@ -244,7 +244,7 @@ export default function Reviews() {
                       .map((r, i) => (
                         <figure
                           key={`${r.name}-${slideIdx}-${i}`}
-                          className="card-lift rounded-2xl border border-border bg-card p-6 shadow-sm"
+                          className={`review-sheet card-lift p-6 ${i === 1 ? "sm:translate-y-2" : ""}`}
                           style={{ transitionDelay: `${i * 60}ms` }}
                         >
                           <div className="mb-3 flex items-center justify-between">
@@ -288,11 +288,11 @@ export default function Reviews() {
                 />
               ))}
             </div>
-            <button
-              type="button"
-              onClick={() => setPlaying(!playing)}
-              aria-label={playing ? "Pausar carrossel" : "Reproduzir carrossel"}
-              className="rounded-full border border-border p-2 transition-colors hover:bg-card"
+                <button
+                  type="button"
+                  onClick={() => setPlaying(!playing)}
+                  aria-label={playing ? "Pausar carrossel" : "Reproduzir carrossel"}
+                  className="rounded-full border border-border bg-paper/70 p-2 transition-colors hover:border-terracotta hover:bg-card"
             >
               {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
             </button>
@@ -308,7 +308,7 @@ export default function Reviews() {
               href={APT1.airbnbUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-press inline-flex items-center gap-2 rounded-full border-2 border-olive px-6 py-3 text-sm font-semibold text-olive"
+              className="btn-press accent-link inline-flex items-center gap-2 rounded-full border-2 px-6 py-3 text-sm font-semibold"
             >
               Avaliações do Flat Verano Stay
               <ExternalLink className="h-4 w-4" />
@@ -317,7 +317,7 @@ export default function Reviews() {
               href={APT2.airbnbUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-press inline-flex items-center gap-2 rounded-full border-2 border-seablue px-6 py-3 text-sm font-semibold text-seablue"
+              className="btn-press accent-link inline-flex items-center gap-2 rounded-full border-2 px-6 py-3 text-sm font-semibold"
             >
               Avaliações do Apto Reformado
               <ExternalLink className="h-4 w-4" />

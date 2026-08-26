@@ -41,11 +41,13 @@ export function Header() {
       }`}
     >
       <div className="container flex items-center justify-between">
-        <button type="button" onClick={() => go("hero")} className="flex items-center gap-3">
-          <img src={ASSETS.logo} alt="Rio Stays by Mauricio" className="h-13 w-13" />
-          <span className="flex flex-col leading-none">
-            <span className="font-serif text-2xl font-semibold italic text-paper">Mauricio</span>
-            <span className="label-eyebrow mt-1 text-[10px] text-paper/70">Rio de Janeiro · Superhost</span>
+        <button type="button" onClick={() => go("hero")} className="brand-signature group">
+          <span className="brand-signature-mark transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105" aria-hidden>
+            M
+          </span>
+          <span className="flex flex-col leading-none text-left">
+            <span className="font-serif text-[1.7rem] font-semibold italic tracking-[-0.03em] text-paper sm:text-3xl">Mauricio</span>
+            <span className="label-eyebrow mt-1 text-[9px] text-paper/70">Rio stays · Superhost</span>
           </span>
         </button>
 
@@ -64,7 +66,7 @@ export function Header() {
             href={`${WHATSAPP_BASE}?text=${encodeURIComponent("Olá! Quero saber mais sobre os apartamentos no Rio")}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-press rounded-full bg-terracotta px-5 py-2.5 text-sm font-semibold text-primary-foreground"
+            className="btn-press btn-cta-hover rounded-full bg-terracotta px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[0_8px_22px_-10px_rgba(180,86,47,0.8)]"
           >
             Falar no WhatsApp
           </a>
@@ -220,7 +222,13 @@ export function Footer() {
     <footer id="contato" className="relative bg-palm pb-10 pt-20 text-paper lg:pt-28">
       <div className="container">
         <div className="reveal mx-auto max-w-3xl text-center">
-          <img src={ASSETS.logo} alt="" className="mx-auto h-14 w-14" aria-hidden />
+          <div className="brand-signature mx-auto" aria-label="Mauricio · Rio stays">
+            <span className="brand-signature-mark" aria-hidden>M</span>
+            <span className="flex flex-col text-left leading-none">
+              <span className="font-serif text-2xl font-semibold italic text-paper">Mauricio</span>
+              <span className="label-eyebrow mt-1 text-[9px] text-paper/60">Rio stays · Superhost</span>
+            </span>
+          </div>
           <h2 className="font-serif mt-6 text-3xl font-semibold leading-tight sm:text-5xl">
             Pronto para viver o Rio <em className="text-[#efc4a3]">com confiança</em>?
           </h2>

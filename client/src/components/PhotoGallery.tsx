@@ -126,7 +126,7 @@ export default function PhotoGallery({ photos, accent, shareTitle, shareUrl }: P
     <>
       {/* Galeria interativa */}
       <div
-        className="reveal group relative"
+        className="gallery-support reveal group relative"
         role="region"
         aria-label="Galeria de fotos"
         onKeyDown={handleKey}
@@ -135,7 +135,7 @@ export default function PhotoGallery({ photos, accent, shareTitle, shareUrl }: P
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="group-photo relative block w-full overflow-hidden rounded-t-[50%] rounded-b-2xl border border-foreground/10 shadow-[0_20px_40px_-20px_rgba(46,74,59,0.4)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_28px_52px_-18px_rgba(46,74,59,0.5)]"
+          className="group-photo relative block w-full overflow-hidden rounded-t-[50%] rounded-b-2xl border border-foreground/10 shadow-[0_14px_30px_-18px_rgba(46,74,59,0.34)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_20px_38px_-18px_rgba(46,74,59,0.42)]"
           style={{ aspectRatio: "5/4" }}
           aria-label={`Abrir foto: ${photos[index].alt}`}
         >
@@ -193,7 +193,7 @@ export default function PhotoGallery({ photos, accent, shareTitle, shareUrl }: P
         {/* Menu de partilha */}
         {showShare && (
           <div
-            className="absolute left-1/2 top-16 z-20 w-72 -translate-x-1/2 overflow-hidden rounded-2xl border border-border bg-card shadow-xl"
+            className="absolute left-1/2 top-16 z-20 w-72 -translate-x-1/2 overflow-hidden rounded-[1rem_1rem_1rem_0.25rem] border border-border bg-card shadow-xl"
             role="menu"
             onClick={(e) => e.stopPropagation()}
           >
@@ -241,7 +241,7 @@ export default function PhotoGallery({ photos, accent, shareTitle, shareUrl }: P
               onClick={() => setIndex(i)}
               aria-label={`Ver foto ${i + 1}: ${p.alt}`}
               aria-pressed={i === index}
-              className={`card-lift relative overflow-hidden rounded-xl border-2 shadow-sm transition-all duration-200 ${
+              className={`relative overflow-hidden rounded-lg border-2 shadow-sm transition-all duration-200 ${
                 i === index
                   ? `border-terracotta ring-2 ring-terracotta/30`
                   : "border-card hover:border-terracotta/50"
