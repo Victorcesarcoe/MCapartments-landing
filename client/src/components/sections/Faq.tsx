@@ -36,7 +36,7 @@ export default function Faq() {
 
   return (
     <section id="faq" className="relative overflow-hidden bg-sand py-20 lg:py-28">
-      {/* Fundo decorativo com parallax */}
+      
       {/* Fundo decorativo com parallax + lazy load */}
       <div
         ref={bgRef}
@@ -56,14 +56,14 @@ export default function Faq() {
       </div>
       <div className="container relative z-10 grid gap-12 lg:grid-cols-[4fr_8fr]">
         <div className="paper-surface reveal p-6 lg:sticky lg:top-24 lg:self-start lg:p-8">
-          <p className="editorial-rule label-eyebrow mb-4 text-[10px]">Nota do Mauricio</p>
+          <p className="editorial-rule label-eyebrow mb-4 text-[10px]">Nota da equipa</p>
           <p className="label-eyebrow mb-4 text-terracotta">Dúvidas frequentes</p>
           <h2 className="font-serif text-3xl font-semibold leading-tight sm:text-4xl">
             Antes de reservar, <em className="text-terracotta">o essencial</em>
           </h2>
           <p className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
             <HelpCircle className="h-4.5 w-4.5 text-terracotta" />
-            Qualquer outra dúvida, é só chamar o Mauricio no WhatsApp.
+            Qualquer outra dúvida, é só chamar a equipa no WhatsApp.
           </p>
           <p className="mt-8 border-t border-border/70 pt-4 font-serif text-lg italic leading-relaxed text-terracotta/90">
             “Prefiro que você reserve sentindo que já sabe como será chegar.”
@@ -138,7 +138,7 @@ export default function Faq() {
         <div className="cta-band flex flex-col items-center justify-center gap-4 px-8 py-10">
           <p className="font-serif text-xl font-semibold sm:text-2xl">Ainda tem dúvidas?</p>
           <p className="max-w-md text-center text-sm text-muted-foreground">
-            O Mauricio responde rapidamente no WhatsApp — antes, durante e depois da sua estadia.
+            A equipa responde rapidamente no WhatsApp — antes, durante e depois da sua estadia.
           </p>
           <a
             href={`${WHATSAPP_BASE}?text=${encodeURIComponent("Olá! Tenho uma dúvida sobre os apartamentos no Rio.")}`}

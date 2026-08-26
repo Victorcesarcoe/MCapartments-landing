@@ -41,14 +41,12 @@ export function Header() {
       }`}
     >
       <div className="container flex items-center justify-between">
-        <button type="button" onClick={() => go("hero")} className="brand-signature group">
-          <span className="brand-signature-mark transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105" aria-hidden>
-            M
-          </span>
-          <span className="flex flex-col leading-none text-left">
-            <span className="font-serif text-[1.7rem] font-semibold italic tracking-[-0.03em] text-paper sm:text-3xl">Mauricio</span>
-            <span className="label-eyebrow mt-1 text-[9px] text-paper/70">Rio stays · Superhost</span>
-          </span>
+        <button type="button" onClick={() => go("hero")} className="brand-signature group" aria-label="M Apartments">
+          <img
+            src={ASSETS.logo}
+            alt="M Apartments"
+            className="brand-logo h-14 w-14 rounded-xl object-contain shadow-[0_10px_24px_-14px_rgba(0,0,0,0.7)] transition-transform duration-300 group-hover:-rotate-2 group-hover:scale-105 sm:h-16 sm:w-16"
+          />
         </button>
 
         <nav className="hidden items-center gap-7 lg:flex">
@@ -171,7 +169,7 @@ export function FloatingWhatsApp() {
           >
             <h3 className="font-serif text-xl font-semibold">Qual apartamento te interessa?</h3>
             <p className="mt-2 text-sm text-muted-foreground">
-              Vou abrir o WhatsApp com uma mensagem pronta para o Mauricio.
+              Vou abrir o WhatsApp com uma mensagem pronta para a equipa de atendimento.
             </p>
             <div className="mt-5 flex flex-col gap-3">
               <a
@@ -222,18 +220,18 @@ export function Footer() {
     <footer id="contato" className="relative bg-palm pb-10 pt-20 text-paper lg:pt-28">
       <div className="container">
         <div className="reveal mx-auto max-w-3xl text-center">
-          <div className="brand-signature mx-auto" aria-label="Mauricio · Rio stays">
-            <span className="brand-signature-mark" aria-hidden>M</span>
-            <span className="flex flex-col text-left leading-none">
-              <span className="font-serif text-2xl font-semibold italic text-paper">Mauricio</span>
-              <span className="label-eyebrow mt-1 text-[9px] text-paper/60">Rio stays · Superhost</span>
-            </span>
+          <div className="brand-signature mx-auto" aria-label="M Apartments">
+            <img
+              src={ASSETS.logo}
+              alt="M Apartments"
+              className="brand-logo h-24 w-24 rounded-2xl object-contain shadow-[0_18px_34px_-18px_rgba(0,0,0,0.65)]"
+            />
           </div>
           <h2 className="font-serif mt-6 text-3xl font-semibold leading-tight sm:text-5xl">
             Pronto para viver o Rio <em className="text-[#efc4a3]">com confiança</em>?
           </h2>
           <p className="mt-4 text-base text-paper/75">
-            Escolha o seu cenário — Barra ou Copacabana — e reserve direto com o Mauricio.
+            Escolha o seu cenário — Barra ou Copacabana — e reserve diretamente pelo WhatsApp.
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a

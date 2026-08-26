@@ -25,3 +25,13 @@ A habilidade com o nome exacto `design-taste-frontend` não está instalada nest
 `pnpm run check` e `pnpm run build` concluíram sem erros. O bundler mantém apenas o aviso existente de chunks superiores a 500 kB.
 
 Nenhuma avaliação, classificação ou testemunho novo foi fabricado; continuam a ser usados os dados existentes do projecto.
+
+
+## Actualização de marca — M Apartments
+
+- [x] Copiar e carregar a logo `logo2.png` para o armazenamento permanente do projecto.
+- [x] Substituir a marca textual e o monograma anterior pela logo M Apartments.
+- [x] Retirar o nome “Mauricio” das áreas visíveis da interface e dos metadados.
+- [x] Ajustar dimensões, contraste e acessibilidade da logo no header, anfitrião e footer.
+- [x] Validar desktop, mobile, TypeScript e build.
+- [x] Guardar checkpoint e entregar a actualização.

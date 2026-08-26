@@ -221,7 +221,7 @@ export default function ApartmentSection({ apt, reversed, theme }: Props) {
                 Reserve o {apt.name}
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Direto pelo Airbnb ou fale com o Mauricio no WhatsApp para combinar datas e valores.
+                Direto pelo Airbnb ou fale pelo WhatsApp para combinar datas e valores.
               </p>
               {/* Selo Superhost com tooltip explicativo */}
               <TooltipProvider>

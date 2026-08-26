@@ -1,5 +1,5 @@
 /**
- * Dados centrais da landing page — Rio Stays by Mauricio.
+ * Dados centrais da landing page — M Apartments no Rio.
  * DESIGN "Aquarela Carioca": acento dourado-oliva para a Barra, azul suave para Copacabana.
  *
  * PLACEHOLDERS marcados com TODO: substituir por links reais do Airbnb, número de WhatsApp
@@ -54,7 +54,7 @@ export const APT1 = {
   locationPoints: ["Próximo ao Parque Olímpico", "Estação do BRT a pé", "Recepção 24h (check-in na portaria)"],
   review: {
     name: "Hiago",
-    text: "O Flat do Mauricio é perfeito pra quem busca um lugar tranquilo e aconchegante no Rio... prédio muito bem localizado.",
+    text: "O Flat é perfeito pra quem busca um lugar tranquilo e aconchegante no Rio... prédio muito bem localizado.",
     rating: 5,
   },
   whatsappMessage: "Olá! Tenho interesse no Flat Verano Stay, Barra Olímpica",
@@ -117,7 +117,7 @@ export const APT2 = {
 };
 
 export const HOST = {
-  name: "Mauricio",
+  name: "M Apartments",
   years: 7,
   reviewsCount: 408,
   rating: 4.94,
@@ -125,11 +125,11 @@ export const HOST = {
 
 export const ALL_REVIEWS = [
   // Flat Verano Stay (Barra)
-  { apt: "verano", name: "Hiago", text: "O Flat do Mauricio é perfeito pra quem busca um lugar tranquilo e aconchegante no Rio... prédio muito bem localizado.", rating: 5, date: "2026-06" },
+  { apt: "verano", name: "Hiago", text: "O Flat é perfeito pra quem busca um lugar tranquilo e aconchegante no Rio... prédio muito bem localizado.", rating: 5, date: "2026-06" },
   { apt: "verano", name: "Evelyn", text: "Apartamento impecável, roupa de cama de hotel e vista linda. O condomínio tem tudo: piscina, sauna e restaurante.", rating: 5, date: "2026-05" },
   { apt: "verano", name: "Davi", text: "A vaga de garagem foi um diferencial enorme pra nós. Check-in na portaria foi simples e rápido.", rating: 5, date: "2026-04" },
   { apt: "verano", name: "Lucas", text: "Vista para a Pedra da Gávea no café da manhã não tem preço. Localização ótima, perto do BRT.", rating: 5, date: "2026-03" },
-  { apt: "verano", name: "Jerusa", text: "Tudo muito limpo e organizado. O Mauricio responde rapidinho e dá ótimas dicas da região.", rating: 5, date: "2026-02" },
+  { apt: "verano", name: "Jerusa", text: "Tudo muito limpo e organizado. A equipa responde rapidinho e dá ótimas dicas da região.", rating: 5, date: "2026-02" },
   { apt: "verano", name: "Bruna", text: "Voltaria com certeza. Apartamento aconchegante e condomínio super completo, perfeito pra descansar.", rating: 5, date: "2026-01" },
   // Apto Copacabana
   { apt: "copacabana", name: "José", text: "Foi uma excelente estadia em Copacabana. O espaço é bem amplo, muito bem localizado, acesso fácil, instruções claras.", rating: 5, date: "2026-07" },
@@ -197,7 +197,7 @@ export const FAQ = [
   {
     category: "checkin",
     q: "Como reservo diretamente, sem passar pelo site?",
-    a: "Você pode reservar pelos anúncios no Airbnb ou falar diretamente com o Mauricio no WhatsApp — ele ajuda com datas, valores e qualquer dúvida antes de você reservar.",
+    a: "Você pode reservar pelos anúncios no Airbnb ou falar diretamente pelo WhatsApp — a equipa ajuda com datas, valores e qualquer dúvida antes de você reservar.",
   },
   // Dicas da região
   {
@@ -213,16 +213,16 @@ export const FAQ = [
   {
     category: "regiao",
     q: "Como chegar de cada apartamento ao Pão de Açúcar ou à Lagoa?",
-    a: "De Copacabana, o acesso é rápido pela Avenida Atlântica de carro ou ônibus. Da Barra, dá para ir pelo Túnel da Joatinga em cerca de 30–40 minutos de carro, ou de BRT + metrô. O Mauricio envia o melhor caminho pelo WhatsApp antes da sua chegada.",
+    a: "De Copacabana, o acesso é rápido pela Avenida Atlântica de carro ou ônibus. Da Barra, dá para ir pelo Túnel da Joatinga em cerca de 30–40 minutos de carro, ou de BRT + metrô. Você pode receber o melhor caminho pelo WhatsApp antes da sua chegada.",
   },
   {
     category: "regiao",
     q: "Vale a pena ir ao Rio no Ano Novo ou no Carnaval?",
-    a: "Sim — mas as datas altas esgotam rápido. Para o Réveillon, o apartamento de Copacabana fica a passos da festa na praia; para o Carnaval, ambos são base prática para os blocos. Reserve com antecedência e converse com o Mauricio sobre valores de alta temporada.",
+    a: "Sim — mas as datas altas esgotam rápido. Para o Réveillon, o apartamento de Copacabana fica a passos da festa na praia; para o Carnaval, ambos são base prática para os blocos. Reserve com antecedência e fale pelo WhatsApp sobre valores de alta temporada.",
   },
 ];
 
 export const ASSETS = {
-  logo: "/manus-storage/logo-mauricio-rio_d1fce60e.png",
+  logo: "/manus-storage/logo2_01397879.png",
   hero: "/manus-storage/hero-rio_4f1073a1.jpg",
 };

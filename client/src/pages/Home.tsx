@@ -1,7 +1,7 @@
 /*
  * DESIGN "Aquarela Carioca" — Landing page single-page:
  * Hero (vídeo) → Anfitrião → Verano Stay (Barra) → Copacabana → Avaliações →
- * Sistema visual: Aquarela Editorial Circulante — vídeo protagonista, superfícies de papel e assinatura de Mauricio.
+ * Sistema visual: Aquarela Editorial Circulante — vídeo protagonista, superfícies de papel e assinatura M Apartments.
  * FAQ → Rodapé CTA + WhatsApp flutuante.
  */
 import { Header, Footer, FloatingWhatsApp, BackToTop } from "@/components/Layout";

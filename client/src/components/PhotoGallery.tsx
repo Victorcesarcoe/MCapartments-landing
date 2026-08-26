@@ -67,7 +67,7 @@ export default function PhotoGallery({ photos, accent, shareTitle, shareUrl }: P
 
   const [showShare, setShowShare] = useState(false);
 
-  const title = shareTitle ? `Conheça o ${shareTitle} — apartamento de Superhost no Rio` : "Apartamentos do Mauricio no Rio";
+  const title = shareTitle ? `Conheça o ${shareTitle} — apartamento de Superhost no Rio` : "M Apartments no Rio";
   const text = shareTitle
     ? `Olha este apartamento no Rio de Janeiro! ${shareTitle} — nota 4,9+, Superhost há 7 anos. ${shareUrl ?? ""}`
     : "Apartamentos de um Superhost no Rio de Janeiro — Barra e Copacabana.";
