@@ -16,13 +16,41 @@ const NAV = [
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [bookingActive, setBookingActive] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
+    let frame = 0;
+    const bookingIds = ["verano-stay", "copacabana"];
+
+    const updateHeaderState = () => {
+      frame = 0;
+      const viewportTop = window.innerHeight * 0.22;
+      const viewportBottom = window.innerHeight * 0.72;
+      const inBookingSection = bookingIds.some((id) => {
+        const section = document.getElementById(id);
+        if (!section) return false;
+        const { top, bottom } = section.getBoundingClientRect();
+        return top <= viewportBottom && bottom >= viewportTop;
+      });
+
+      setScrolled(window.scrollY > 40);
+      setBookingActive(inBookingSection && window.scrollY > 120);
+    };
+
+    const onScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(updateHeaderState);
+    };
+
+    updateHeaderState();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   const go = (id: string) => {
@@ -37,7 +65,11 @@ export function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
-        scrolled ? "bg-palm/95 py-3 shadow-lg backdrop-blur-md" : "bg-transparent py-5"
+        scrolled
+          ? bookingActive
+            ? "bg-terracotta/95 py-3 shadow-lg backdrop-blur-md"
+            : "bg-palm/95 py-3 shadow-lg backdrop-blur-md"
+          : "bg-transparent py-5"
       }`}
     >
       <div className="container flex items-center justify-between">
@@ -86,7 +118,11 @@ export function Header() {
       </div>
 
       {open && (
-        <nav className="border-t border-paper/15 bg-palm/98 px-6 py-5 backdrop-blur-md lg:hidden">
+        <nav
+          className={`border-t border-paper/15 px-6 py-5 backdrop-blur-md lg:hidden ${
+            bookingActive ? "bg-terracotta/98" : "bg-palm/98"
+          }`}
+        >
           <div className="flex flex-col gap-1">
             {NAV.map((n) => (
               <button

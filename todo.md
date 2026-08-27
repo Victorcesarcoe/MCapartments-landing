@@ -52,3 +52,12 @@ Nenhuma avaliação, classificação ou testemunho novo foi fabricado; continuam
 - [x] Garantir que o efeito não interfere com teclado, toque ou movimento reduzido.
 - [x] Validar desktop, mobile e build.
 - [x] Guardar e entregar um novo checkpoint.
+
+
+## Header terracota nas secções de reserva
+
+- [x] Inspeccionar o header e identificar as secções de reserva relevantes.
+- [x] Implementar detecção contextual com scroll e transição suave para terracota.
+- [x] Garantir contraste, legibilidade e comportamento correcto em mobile.
+- [x] Validar TypeScript, build e apresentação visual.
+- [x] Guardar e entregar um novo checkpoint.
