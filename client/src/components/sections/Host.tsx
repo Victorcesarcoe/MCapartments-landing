@@ -19,11 +19,13 @@ export default function Host() {
       <div className="container">
         {/* Cabeçalho editorial sem fotografia: logo M Apartments */}
         <div className="reveal mb-12 flex flex-col items-center text-center">
-          <img
-            src={ASSETS.logo}
-            alt="M Apartments"
-            className="mb-6 h-24 w-24 rounded-2xl object-contain shadow-[0_20px_40px_-16px_rgba(46,74,59,0.5)]"
-          />
+          <span className="logo-glow mb-6 h-24 w-24 rounded-2xl">
+            <img
+              src={ASSETS.logo}
+              alt="M Apartments"
+              className="h-full w-full rounded-[inherit] object-contain shadow-[0_20px_40px_-16px_rgba(46,74,59,0.5)]"
+            />
+          </span>
           <p className="label-eyebrow mb-3 text-terracotta">Conheça a hospitalidade · M Apartments</p>
           <h2 className="font-serif text-4xl font-semibold leading-tight sm:text-6xl">
             <em className="text-terracotta">Cuidado que se sente</em>

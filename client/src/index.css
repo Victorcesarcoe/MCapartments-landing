@@ -370,6 +370,77 @@
     line-height: 1;
   }
 
+  .logo-glow {
+    position: relative;
+    display: block;
+    isolation: isolate;
+    overflow: hidden;
+    flex: 0 0 auto;
+  }
+
+  .logo-glow::after {
+    position: absolute;
+    inset: -30% auto -30% -75%;
+    width: 42%;
+    content: "";
+    pointer-events: none;
+    background: linear-gradient(
+      105deg,
+      transparent 0%,
+      transparent 35%,
+      oklch(1 0 0 / 0.08) 42%,
+      oklch(1 0 0 / 0.78) 50%,
+      oklch(1 0 0 / 0.08) 58%,
+      transparent 65%,
+      transparent 100%
+    );
+    opacity: 0;
+    transform: skewX(-16deg) translateX(-120%);
+  }
+
+  .logo-glow {
+    transition: filter 240ms var(--ease-out-snap);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes logo-sheen {
+      0% {
+        opacity: 0;
+        transform: skewX(-16deg) translateX(-120%);
+      }
+      18% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: skewX(-16deg) translateX(520%);
+      }
+    }
+
+    .logo-glow:hover::after,
+    .logo-glow:focus-within::after,
+    .brand-signature:focus-visible .logo-glow::after {
+      animation: logo-sheen 760ms var(--ease-out-snap) both;
+    }
+
+    .logo-glow:hover,
+    .logo-glow:focus-within,
+    .brand-signature:focus-visible .logo-glow {
+      filter: brightness(1.06) saturate(1.04);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-glow {
+      transition: filter 180ms ease-out;
+    }
+
+    .logo-glow:hover,
+    .logo-glow:focus-within {
+      filter: brightness(1.04);
+    }
+  }
+
   @media (prefers-reduced-motion: no-preference) {
     .video-tour-object {
       transition:

@@ -43,3 +43,12 @@ Nenhuma avaliação, classificação ou testemunho novo foi fabricado; continuam
 - [x] Confirmar ou aplicar manualmente o texto “Conforto, segurança e uma estadia inesquecível”.
 - [x] Validar TypeScript, build e leitura visual do Hero em desktop e mobile.
 - [ ] Guardar um novo checkpoint verificado.
+
+
+## Micro-animação da logo M Apartments
+
+- [x] Inspeccionar os usos actuais da logo no header, anfitrião e footer.
+- [x] Implementar brilho subtil no hover sem alterar a imagem original.
+- [x] Garantir que o efeito não interfere com teclado, toque ou movimento reduzido.
+- [x] Validar desktop, mobile e build.
+- [x] Guardar e entregar um novo checkpoint.

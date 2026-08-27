@@ -42,11 +42,13 @@ export function Header() {
     >
       <div className="container flex items-center justify-between">
         <button type="button" onClick={() => go("hero")} className="brand-signature group" aria-label="M Apartments">
-          <img
-            src={ASSETS.logo}
-            alt="M Apartments"
-            className="brand-logo h-14 w-14 rounded-xl object-contain shadow-[0_10px_24px_-14px_rgba(0,0,0,0.7)] transition-transform duration-300 group-hover:-rotate-2 group-hover:scale-105 sm:h-16 sm:w-16"
-          />
+          <span className="logo-glow h-14 w-14 rounded-xl sm:h-16 sm:w-16">
+            <img
+              src={ASSETS.logo}
+              alt="M Apartments"
+              className="h-full w-full rounded-[inherit] object-contain shadow-[0_10px_24px_-14px_rgba(0,0,0,0.7)] transition-transform duration-300 group-hover:-rotate-2 group-hover:scale-105"
+            />
+          </span>
         </button>
 
         <nav className="hidden items-center gap-7 lg:flex">
@@ -221,11 +223,13 @@ export function Footer() {
       <div className="container">
         <div className="reveal mx-auto max-w-3xl text-center">
           <div className="brand-signature mx-auto" aria-label="M Apartments">
-            <img
-              src={ASSETS.logo}
-              alt="M Apartments"
-              className="brand-logo h-24 w-24 rounded-2xl object-contain shadow-[0_18px_34px_-18px_rgba(0,0,0,0.65)]"
-            />
+            <span className="logo-glow h-24 w-24 rounded-2xl">
+              <img
+                src={ASSETS.logo}
+                alt="M Apartments"
+                className="h-full w-full rounded-[inherit] object-contain shadow-[0_18px_34px_-18px_rgba(0,0,0,0.65)]"
+              />
+            </span>
           </div>
           <h2 className="font-serif mt-6 text-3xl font-semibold leading-tight sm:text-5xl">
             Pronto para viver o Rio <em className="text-[#efc4a3]">com confiança</em>?
