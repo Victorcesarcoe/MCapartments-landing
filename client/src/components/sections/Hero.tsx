@@ -67,7 +67,7 @@ export default function Hero() {
             Superhost · 7 anos hospedando
           </p>
           <h1 className="hero-fade-in hero-delay-2 font-serif text-4xl leading-[1.05] font-semibold text-paper sm:text-6xl lg:text-7xl">
-            Viva o Rio. <em className="text-[#efc4a3]">Hospede-se com confiança.</em>
+            Conforto, segurança e uma <em className="text-[#efc4a3]">estadia inesquecível</em>
           </h1>
           <p className="hero-fade-in hero-delay-3 mt-6 max-w-xl text-base text-paper/85 sm:text-lg">
             Duas experiências cuidadosamente preparadas para você: a energia de <strong className="text-paper">Copacabana</strong> ou o

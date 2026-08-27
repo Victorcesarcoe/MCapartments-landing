@@ -35,3 +35,11 @@ Nenhuma avaliação, classificação ou testemunho novo foi fabricado; continuam
 - [x] Ajustar dimensões, contraste e acessibilidade da logo no header, anfitrião e footer.
 - [x] Validar desktop, mobile, TypeScript e build.
 - [x] Guardar checkpoint e entregar a actualização.
+
+
+## Verificação do headline do Hero
+
+- [x] Inspeccionar o conteúdo actual de `Hero.tsx` e os ficheiros alterados pela edição visual.
+- [x] Confirmar ou aplicar manualmente o texto “Conforto, segurança e uma estadia inesquecível”.
+- [x] Validar TypeScript, build e leitura visual do Hero em desktop e mobile.
+- [ ] Guardar um novo checkpoint verificado.
