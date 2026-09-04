@@ -97,3 +97,13 @@ Nenhuma avaliação, classificação ou testemunho novo foi fabricado; continuam
 - [x] Confirmar ou remover manualmente o texto secundário do Hero.
 - [x] Validar composição desktop, mobile, TypeScript e build.
 - [x] Guardar e entregar um novo checkpoint.
+
+
+## Abertura cinematográfica do Hero
+
+- [x] Inspeccionar o carregamento actual do Hero e o layout global.
+- [x] Implementar uma abertura breve com a mesma fotografia de fundo do Hero.
+- [x] Integrar a logo M Apartments e uma transição suave para o conteúdo.
+- [x] Garantir que não bloqueia a navegação e respeita `prefers-reduced-motion`.
+- [x] Validar desktop, mobile, acessibilidade, TypeScript e build.
+- [x] Guardar e entregar um novo checkpoint.

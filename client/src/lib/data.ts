@@ -8,6 +8,7 @@
 
 export const WHATSAPP_NUMBER = "5521998502505";
 export const WHATSAPP_BASE = `https://wa.me/${WHATSAPP_NUMBER}`;
+export const HERO_POSTER = "/manus-storage/hero-rio_4f1073a1.jpg";
 
 export const APT1 = {
   id: "verano-stay",

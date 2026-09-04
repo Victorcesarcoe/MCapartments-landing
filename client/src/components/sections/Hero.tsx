@@ -5,9 +5,9 @@
  */
 import { ChevronDown } from "lucide-react";
 import { useParallax } from "@/hooks/useParallax";
+import { HERO_POSTER } from "@/lib/data";
 
 const HERO_VIDEO: string = ""; // TODO: reel de destaque intercalando os 2 apartamentos (mp4/webm)
-const HERO_POSTER = "/manus-storage/hero-rio_4f1073a1.jpg";
 
 function scrollTo(id: string) {
   // Scroll fluido com offset para o header fixo

@@ -575,3 +575,206 @@
     }
   }
 }
+
+
+@layer components {
+  /* Abertura cinematográfica — a mesma imagem do Hero, com assinatura M Apartments. */
+  .opening-intro {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background: #1f3328;
+    color: var(--paper);
+    opacity: 1;
+    transition: opacity 680ms var(--ease-out-snap);
+  }
+
+  .opening-intro--leaving {
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .opening-intro__image,
+  .opening-intro__wash {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .opening-intro__image {
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1.08);
+  }
+
+  .opening-intro__wash {
+    background:
+      linear-gradient(180deg, oklch(0.18 0.04 160 / 0.28), oklch(0.18 0.04 160 / 0.82)),
+      linear-gradient(90deg, oklch(0.18 0.04 160 / 0.62), transparent 72%);
+    opacity: 0;
+  }
+
+  .opening-intro__content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  .opening-intro__logo-frame {
+    width: clamp(7rem, 18vw, 9.5rem);
+    height: clamp(7rem, 18vw, 9.5rem);
+    padding: 0.7rem;
+    border: 1px solid oklch(0.975 0.01 85 / 0.45);
+    border-radius: 50% 50% 1.6rem 1.6rem;
+    background: oklch(0.975 0.01 85 / 0.96);
+    box-shadow: 0 22px 60px -20px oklch(0 0 0 / 0.6);
+  }
+
+  .opening-intro__rule {
+    width: 3.5rem;
+    height: 1px;
+    margin-top: 1.6rem;
+    background: #f0d9c0;
+    opacity: 0.8;
+  }
+
+  .opening-intro__eyebrow {
+    margin-top: 1.1rem;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #f0d9c0;
+  }
+
+  .opening-intro__caption {
+    margin-top: 0.55rem;
+    font-family: var(--font-serif);
+    font-size: clamp(1.25rem, 3vw, 1.7rem);
+    font-style: italic;
+    color: var(--paper);
+  }
+
+  .opening-intro__skip {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 2;
+    border: 1px solid oklch(0.975 0.01 85 / 0.35);
+    border-radius: 999px;
+    padding: 0.65rem 1rem;
+    color: oklch(0.975 0.01 85 / 0.84);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition:
+      background-color 180ms var(--ease-out-snap),
+      color 180ms var(--ease-out-snap),
+      transform 180ms var(--ease-out-snap);
+  }
+
+  .opening-intro__skip:hover,
+  .opening-intro__skip:focus-visible {
+    background: oklch(0.975 0.01 85 / 0.14);
+    color: var(--paper);
+    transform: translateY(-2px);
+  }
+
+  .opening-intro__progress {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: left center;
+    background: #f0d9c0;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes opening-image-in {
+      from {
+        opacity: 0;
+        transform: scale(1.08);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes opening-wash-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes opening-content-in {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes opening-progress {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+
+    .opening-intro__image {
+      animation: opening-image-in 1.2s var(--ease-out-snap) both;
+    }
+
+    .opening-intro__wash {
+      animation: opening-wash-in 850ms var(--ease-out-snap) 120ms both;
+    }
+
+    .opening-intro__content {
+      animation: opening-content-in 850ms var(--ease-out-snap) 260ms both;
+    }
+
+    .opening-intro__progress {
+      animation: opening-progress 1.6s linear both;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .opening-intro__image,
+    .opening-intro__wash,
+    .opening-intro__content {
+      opacity: 1;
+      transform: none;
+    }
+
+    .opening-intro__progress {
+      transform: scaleX(1);
+    }
+
+    .opening-intro {
+      transition-duration: 180ms;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .opening-intro__skip {
+      top: 1rem;
+      right: 1rem;
+      padding: 0.55rem 0.8rem;
+      font-size: 0.68rem;
+    }
+  }
+}

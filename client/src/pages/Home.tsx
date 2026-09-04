@@ -5,6 +5,7 @@
  * FAQ → Rodapé CTA + WhatsApp flutuante.
  */
 import { Header, Footer, FloatingWhatsApp, BackToTop } from "@/components/Layout";
+import OpeningIntro from "@/components/OpeningIntro";
 import CoastlineDivider from "@/components/CoastlineDivider";
 import Hero from "@/components/sections/Hero";
 import Host from "@/components/sections/Host";
@@ -21,6 +22,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      <OpeningIntro />
       <Header />
       <main>
         <Hero />
