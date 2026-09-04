@@ -89,3 +89,11 @@ Nenhuma avaliação, classificação ou testemunho novo foi fabricado; continuam
 - [x] Rever textos alternativos, poster do tour e comportamento lazy-loading.
 - [x] Validar galeria, lightbox, swipe, zoom, partilha, desktop, mobile e build.
 - [x] Guardar e entregar um novo checkpoint.
+
+
+## Remoção do parágrafo do Hero
+
+- [x] Inspeccionar o parágrafo actual em `Hero.tsx`.
+- [x] Confirmar ou remover manualmente o texto secundário do Hero.
+- [x] Validar composição desktop, mobile, TypeScript e build.
+- [x] Guardar e entregar um novo checkpoint.

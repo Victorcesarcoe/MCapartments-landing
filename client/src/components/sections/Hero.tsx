@@ -69,11 +69,6 @@ export default function Hero() {
           <h1 className="hero-fade-in hero-delay-2 font-serif text-4xl leading-[1.05] font-semibold text-paper sm:text-6xl lg:text-7xl">
             Conforto, segurança e uma <em className="text-[#efc4a3]">estadia inesquecível</em>
           </h1>
-          <p className="hero-fade-in hero-delay-3 mt-6 max-w-xl text-base text-paper/85 sm:text-lg">
-            Duas experiências cuidadosamente preparadas para você: a energia de <strong className="text-paper">Copacabana</strong> ou o
-            conforto da <strong className="text-paper">Barra Olímpica</strong> — 408 avaliações e nota <strong className="text-[#f0d9c0]">4,94</strong>.
-          </p>
-
           <div className="hero-fade-in hero-delay-4 mt-10 flex flex-col gap-4 sm:flex-row">
             <button
               type="button"
