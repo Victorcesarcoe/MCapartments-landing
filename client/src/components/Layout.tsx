@@ -152,6 +152,7 @@ export function BackToTop() {
 
 export function FloatingWhatsApp() {
   const [which, setWhich] = useState(false);
+  const [pulseAttention, setPulseAttention] = useState(false);
   const { apartmentId: activeApartmentId, inApartmentSection } = useActiveApartment();
   const activeWhatsAppMessage =
     activeApartmentId === APT1.id
@@ -159,6 +160,11 @@ export function FloatingWhatsApp() {
       : activeApartmentId === APT2.id
         ? APT2.whatsappMessage
         : null;
+
+  useEffect(() => {
+    const attentionTimer = window.setTimeout(() => setPulseAttention(true), 5000);
+    return () => window.clearTimeout(attentionTimer);
+  }, []);
 
   const handleFloatingWhatsApp = () => {
     if (inApartmentSection && activeWhatsAppMessage) {
@@ -178,11 +184,11 @@ export function FloatingWhatsApp() {
             ? `Reservar ${activeApartmentId === APT1.id ? APT1.shortName : APT2.shortName} pelo WhatsApp`
             : "Reservar pelo WhatsApp"
         }
-        className="btn-press group fixed bottom-6 right-6 z-40 flex h-15 w-15 items-center justify-center rounded-full bg-[#25D366] p-4 text-white shadow-[0_12px_34px_-6px_rgba(37,211,102,0.55)] transition-transform duration-200 hover:scale-105"
+        className={`btn-press group fixed bottom-6 right-6 z-40 flex h-15 w-15 items-center justify-center rounded-full bg-[#25D366] p-4 text-white shadow-[0_12px_34px_-6px_rgba(37,211,102,0.55)] transition-transform duration-200 hover:scale-105 ${pulseAttention ? "whatsapp-attention" : ""}`}
       >
-        {/* Anel de pulsação */}
+        {/* Pulso de atenção único, iniciado após alguns segundos de leitura */}
         <span
-          className="absolute inset-0 rounded-full bg-[#25D366]/50 [animation:pulse-ring_2.2s_cubic-bezier(0.23,1,0.32,1)_infinite]"
+          className={`absolute inset-0 rounded-full bg-[#25D366]/50 ${pulseAttention ? "[animation:pulse-ring_2.2s_cubic-bezier(0.23,1,0.32,1)_1]" : "opacity-0"}`}
           aria-hidden
         />
         <MessageCircle className="relative h-7 w-7" />

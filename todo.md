@@ -70,3 +70,12 @@ Nenhuma avaliação, classificação ou testemunho novo foi fabricado; continuam
 - [x] Garantir que os CTAs globais e das secções usam o contexto correcto.
 - [x] Validar URLs codificados, mobile, TypeScript e build.
 - [x] Guardar e entregar um novo checkpoint.
+
+
+## Pulso temporizado do WhatsApp
+
+- [x] Inspeccionar o botão flutuante e as animações existentes.
+- [x] Implementar um pulso suave após alguns segundos na página.
+- [x] Garantir que o pulso não é intrusivo e respeita `prefers-reduced-motion`.
+- [x] Validar desktop, mobile, acessibilidade, TypeScript e build.
+- [x] Guardar e entregar um novo checkpoint.

@@ -551,4 +551,27 @@
       opacity: 0;
     }
   }
+
+  .whatsapp-attention {
+    animation: whatsapp-attention 780ms cubic-bezier(0.23, 1, 0.32, 1) 1;
+  }
+
+  @keyframes whatsapp-attention {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    32% {
+      transform: scale(1.055);
+    }
+    58% {
+      transform: scale(0.99);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .whatsapp-attention {
+      animation: none !important;
+    }
+  }
 }
