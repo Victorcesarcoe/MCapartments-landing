@@ -1,10 +1,11 @@
 /*
  * DESIGN "Aquarela Carioca": header fixo que ganha fundo opaco ao rolar,
  * rodapé verde-palma profundo com CTA final, botão flutuante de WhatsApp
- * que pergunta qual apartamento antes de redirecionar.
+ * que usa o apartamento em foco ou pergunta qual estadia interessa.
  */
 import { useEffect, useState } from "react";
 import { ASSETS, WHATSAPP_BASE, APT1, APT2 } from "@/lib/data";
+import { useActiveApartment } from "@/hooks/useActiveApartment";
 import { MessageCircle, Star, ExternalLink, ArrowUp } from "lucide-react";
 
 const NAV = [
@@ -16,41 +17,15 @@ const NAV = [
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [bookingActive, setBookingActive] = useState(false);
   const [open, setOpen] = useState(false);
+  const { apartmentId: activeApartmentId, inApartmentSection } = useActiveApartment();
+  const bookingActive = inApartmentSection && scrolled;
 
   useEffect(() => {
-    let frame = 0;
-    const bookingIds = ["verano-stay", "copacabana"];
-
-    const updateHeaderState = () => {
-      frame = 0;
-      const viewportTop = window.innerHeight * 0.22;
-      const viewportBottom = window.innerHeight * 0.72;
-      const inBookingSection = bookingIds.some((id) => {
-        const section = document.getElementById(id);
-        if (!section) return false;
-        const { top, bottom } = section.getBoundingClientRect();
-        return top <= viewportBottom && bottom >= viewportTop;
-      });
-
-      setScrolled(window.scrollY > 40);
-      setBookingActive(inBookingSection && window.scrollY > 120);
-    };
-
-    const onScroll = () => {
-      if (frame) return;
-      frame = window.requestAnimationFrame(updateHeaderState);
-    };
-
-    updateHeaderState();
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
-    return () => {
-      if (frame) window.cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const go = (id: string) => {
@@ -95,7 +70,13 @@ export function Header() {
             </button>
           ))}
           <a
-            href={`${WHATSAPP_BASE}?text=${encodeURIComponent("Olá! Quero saber mais sobre os apartamentos no Rio")}`}
+            href={`${WHATSAPP_BASE}?text=${encodeURIComponent(
+              activeApartmentId === APT1.id
+                ? APT1.whatsappMessage
+                : activeApartmentId === APT2.id
+                  ? APT2.whatsappMessage
+                  : "Olá! Quero saber mais sobre os apartamentos no Rio",
+            )}`}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-press btn-cta-hover rounded-full bg-terracotta px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[0_8px_22px_-10px_rgba(180,86,47,0.8)]"
@@ -171,13 +152,32 @@ export function BackToTop() {
 
 export function FloatingWhatsApp() {
   const [which, setWhich] = useState(false);
+  const { apartmentId: activeApartmentId, inApartmentSection } = useActiveApartment();
+  const activeWhatsAppMessage =
+    activeApartmentId === APT1.id
+      ? APT1.whatsappMessage
+      : activeApartmentId === APT2.id
+        ? APT2.whatsappMessage
+        : null;
+
+  const handleFloatingWhatsApp = () => {
+    if (inApartmentSection && activeWhatsAppMessage) {
+      window.open(`${WHATSAPP_BASE}?text=${encodeURIComponent(activeWhatsAppMessage)}`, "_blank", "noopener,noreferrer");
+      return;
+    }
+    setWhich(true);
+  };
 
   return (
     <>
       <button
         type="button"
-        onClick={() => setWhich(true)}
-        aria-label="Reservar pelo WhatsApp"
+        onClick={handleFloatingWhatsApp}
+        aria-label={
+          inApartmentSection && activeApartmentId
+            ? `Reservar ${activeApartmentId === APT1.id ? APT1.shortName : APT2.shortName} pelo WhatsApp`
+            : "Reservar pelo WhatsApp"
+        }
         className="btn-press group fixed bottom-6 right-6 z-40 flex h-15 w-15 items-center justify-center rounded-full bg-[#25D366] p-4 text-white shadow-[0_12px_34px_-6px_rgba(37,211,102,0.55)] transition-transform duration-200 hover:scale-105"
       >
         {/* Anel de pulsação */}

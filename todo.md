@@ -61,3 +61,12 @@ Nenhuma avaliação, classificação ou testemunho novo foi fabricado; continuam
 - [x] Garantir contraste, legibilidade e comportamento correcto em mobile.
 - [x] Validar TypeScript, build e apresentação visual.
 - [x] Guardar e entregar um novo checkpoint.
+
+
+## WhatsApp contextual por apartamento
+
+- [x] Auditar os CTAs actuais e a origem dos nomes dos apartamentos.
+- [x] Implementar mensagens pré-preenchidas específicas para Barra e Copacabana.
+- [x] Garantir que os CTAs globais e das secções usam o contexto correcto.
+- [x] Validar URLs codificados, mobile, TypeScript e build.
+- [x] Guardar e entregar um novo checkpoint.

@@ -2,8 +2,9 @@
  * DESIGN "Aquarela Carioca": FAQ agrupado por categorias (Check-in e horários,
  * Regras da casa, Dicas sobre a região) — accordion editorial em fundo areia.
  */
-import { FAQ, FAQ_GROUPS, WHATSAPP_BASE, type FaqCategory } from "@/lib/data";
+import { APT1, APT2, FAQ, FAQ_GROUPS, WHATSAPP_BASE, type FaqCategory } from "@/lib/data";
 import { useState } from "react";
+import { useActiveApartment } from "@/hooks/useActiveApartment";
 import { useParallax } from "@/hooks/useParallax";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { HelpCircle, Clock, House, Compass, MessageCircle, Search, X } from "lucide-react";
@@ -33,6 +34,16 @@ export default function Faq() {
   const totalResults = filteredGroups.reduce((acc, g) => acc + g.items.length, 0);
 
   const { bgRef, visible } = useParallax(0.12);
+  const { apartmentId: activeApartmentId } = useActiveApartment();
+  const activeApartmentName =
+    activeApartmentId === APT1.id
+      ? APT1.shortName
+      : activeApartmentId === APT2.id
+        ? APT2.shortName
+        : null;
+  const faqWhatsAppMessage = activeApartmentName
+    ? `Olá! Tenho uma dúvida sobre o ${activeApartmentName}.`
+    : "Olá! Tenho uma dúvida sobre os apartamentos no Rio.";
 
   return (
     <section id="faq" className="relative overflow-hidden bg-sand py-20 lg:py-28">
@@ -141,7 +152,7 @@ export default function Faq() {
             A equipa responde rapidamente no WhatsApp — antes, durante e depois da sua estadia.
           </p>
           <a
-            href={`${WHATSAPP_BASE}?text=${encodeURIComponent("Olá! Tenho uma dúvida sobre os apartamentos no Rio.")}`}
+            href={`${WHATSAPP_BASE}?text=${encodeURIComponent(faqWhatsAppMessage)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-press mt-2 inline-flex items-center gap-2 rounded-full bg-terracotta px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
