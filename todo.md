@@ -107,3 +107,13 @@ Nenhuma avaliação, classificação ou testemunho novo foi fabricado; continuam
 - [x] Garantir que não bloqueia a navegação e respeita `prefers-reduced-motion`.
 - [x] Validar desktop, mobile, acessibilidade, TypeScript e build.
 - [x] Guardar e entregar um novo checkpoint.
+
+
+## Fotos do Apto Reformado — Copacabana
+
+- [x] Copiar e carregar as 18 fotos fornecidas para o armazenamento permanente do projecto.
+- [x] Preservar exactamente a sequência enviada pelo utilizador.
+- [x] Actualizar apenas a galeria do Apto Reformado, sem alterar o Flat Verano Stay.
+- [x] Actualizar poster, textos alternativos e comportamento lazy-loading.
+- [x] Validar galeria, lightbox, swipe, zoom, partilha, desktop, mobile e build.
+- [x] Guardar e entregar um novo checkpoint.
