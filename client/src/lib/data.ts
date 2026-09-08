@@ -25,7 +25,7 @@ export const APT1 = {
   beds: "Cama queen + sofá-cama de casal",
   bathrooms: 1,
   accent: "olive" as const,
-  videoUrl: "", // TODO: URL do vídeo-tour real (mp4/webm)
+  videoUrl: "/videos/verano-stay-tour.mp4",
   posterUrl: "/manus-storage/01-sala-de-estar2_599ddeaf.avif",
   gallery: [
     { src: "/manus-storage/01-sala-de-estar2_599ddeaf.avif", alt: "Sala de estar do Flat Verano Stay" },
@@ -95,7 +95,7 @@ export const APT2 = {
   beds: "Cama king size + sofá-cama",
   bathrooms: 1,
   accent: "seablue" as const,
-  videoUrl: "", // TODO: URL do vídeo-tour real (mp4/webm)
+  videoUrl: "/videos/copacabana-tour.mp4",
   posterUrl: "/manus-storage/01-sala-area1_699025e3.avif",
   gallery: [
     { src: "/manus-storage/01-sala-area1_699025e3.avif", alt: "Sala do Apto Reformado em Copacabana" },
