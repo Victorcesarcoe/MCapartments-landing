@@ -40,7 +40,7 @@ export default function Hero() {
         <div ref={bgRef} className="absolute inset-0 will-change-transform transition-transform duration-100 ease-out" style={{ transform: "translateY(0) scale(1.05)" }}>
         {visible && HERO_VIDEO ? (
           <video
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover opacity-40"
             autoPlay
             loop
             muted
@@ -52,7 +52,7 @@ export default function Hero() {
             <source src={HERO_VIDEO.replace(".mp4", ".webm")} type="video/webm" />
           </video>
         ) : (
-          <img src={HERO_POSTER} alt="Rio de Janeiro ao entardecer visto de um apartamento" className="h-full w-full object-cover" />
+          <img src={HERO_POSTER} alt="Rio de Janeiro ao entardecer visto de um apartamento" className="h-full w-full object-cover opacity-40" />
         )}
         {/* Gradiente para garantir contraste do texto */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#1f3328]/95 via-[#1f3328]/45 to-[#1f3328]/25" />
