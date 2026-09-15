@@ -1,119 +1,29 @@
-# Revisão visual — design-taste-frontend
+# Migração Full-Stack e Armazenamento de Ficheiros
 
 ## Estado
 
-A habilidade com o nome exacto `design-taste-frontend` não está instalada neste ambiente. Foi aplicada a revisão visual com base na auditoria independente disponível e nas decisões documentadas em `ideas.md`.
+O projecto está a ser convertido de um template estático para um template full-stack (`web-db-user`) para permitir o alojamento de vídeos e outros media grandes no armazenamento permanente do projecto, resolvendo o bloqueio de publicação do GitHub.
 
 ## Checklist
 
-- [x] Verificar a disponibilidade da habilidade e definir a alternativa.
-- [x] Auditar desktop e mobile.
-- [x] Reforçar a assinatura “Mauricio · Rio stays” no header, anfitrião e footer.
-- [x] Transformar o tour em vídeo no objecto principal dos apartamentos.
-- [x] Reduzir o aspecto de booking-template na galeria, comodidades, avaliações e FAQ.
-- [x] Aplicar superfícies de papel, cantos assimétricos e agrupamentos editoriais.
-- [x] Reforçar a hierarquia de acções com terracota como CTA principal.
-- [x] Unificar a base quente entre as duas secções de apartamentos e os divisores.
-- [x] Rever responsividade, acessibilidade e movimento reduzido.
-- [x] Validar TypeScript e build de produção.
-- [x] Capturar screenshots representativos em desktop e mobile.
-- [ ] Guardar o checkpoint final.
-- [ ] Entregar o resultado ao utilizador.
+### Fase 1: Migração Full-Stack
+- [x] Activar a funcionalidade `web-db-user` no projecto.
+- [x] Validar a nova estrutura de pastas (`server/`, `drizzle/`, `storage/`).
+- [x] Confirmar a disponibilidade das APIs de armazenamento.
 
-## Validação
+### Fase 2: Gestão de Media
+- [x] Identificar todos os ficheiros grandes em `client/public/videos/` e outros directórios.
+- [x] Carregar os vídeos `copacabana-tour.mp4` e `verano-stay-tour.mp4` para o armazenamento S3.
+- [x] Carregar quaisquer outros media grandes detetados no repositório.
+- [x] Remover os ficheiros físicos do repositório local após o carregamento bem-sucedido.
 
-`pnpm run check` e `pnpm run build` concluíram sem erros. O bundler mantém apenas o aviso existente de chunks superiores a 500 kB.
+### Fase 3: Integração e Actualização
+- [x] Actualizar as referências de vídeo em `client/src/lib/data.ts` para os novos caminhos `/manus-storage/...`.
+- [x] Actualizar as referências em `client/src/components/sections/Hero.tsx` e `ApartmentSection.tsx`.
+- [x] Verificar se existem outros media (imagens pesadas) que devam ser migrados.
 
-Nenhuma avaliação, classificação ou testemunho novo foi fabricado; continuam a ser usados os dados existentes do projecto.
-
-
-## Actualização de marca — M Apartments
-
-- [x] Copiar e carregar a logo `logo2.png` para o armazenamento permanente do projecto.
-- [x] Substituir a marca textual e o monograma anterior pela logo M Apartments.
-- [x] Retirar o nome “Mauricio” das áreas visíveis da interface e dos metadados.
-- [x] Ajustar dimensões, contraste e acessibilidade da logo no header, anfitrião e footer.
-- [x] Validar desktop, mobile, TypeScript e build.
-- [x] Guardar checkpoint e entregar a actualização.
-
-
-## Verificação do headline do Hero
-
-- [x] Inspeccionar o conteúdo actual de `Hero.tsx` e os ficheiros alterados pela edição visual.
-- [x] Confirmar ou aplicar manualmente o texto “Conforto, segurança e uma estadia inesquecível”.
-- [x] Validar TypeScript, build e leitura visual do Hero em desktop e mobile.
-- [ ] Guardar um novo checkpoint verificado.
-
-
-## Micro-animação da logo M Apartments
-
-- [x] Inspeccionar os usos actuais da logo no header, anfitrião e footer.
-- [x] Implementar brilho subtil no hover sem alterar a imagem original.
-- [x] Garantir que o efeito não interfere com teclado, toque ou movimento reduzido.
-- [x] Validar desktop, mobile e build.
-- [x] Guardar e entregar um novo checkpoint.
-
-
-## Header terracota nas secções de reserva
-
-- [x] Inspeccionar o header e identificar as secções de reserva relevantes.
-- [x] Implementar detecção contextual com scroll e transição suave para terracota.
-- [x] Garantir contraste, legibilidade e comportamento correcto em mobile.
-- [x] Validar TypeScript, build e apresentação visual.
-- [x] Guardar e entregar um novo checkpoint.
-
-
-## WhatsApp contextual por apartamento
-
-- [x] Auditar os CTAs actuais e a origem dos nomes dos apartamentos.
-- [x] Implementar mensagens pré-preenchidas específicas para Barra e Copacabana.
-- [x] Garantir que os CTAs globais e das secções usam o contexto correcto.
-- [x] Validar URLs codificados, mobile, TypeScript e build.
-- [x] Guardar e entregar um novo checkpoint.
-
-
-## Pulso temporizado do WhatsApp
-
-- [x] Inspeccionar o botão flutuante e as animações existentes.
-- [x] Implementar um pulso suave após alguns segundos na página.
-- [x] Garantir que o pulso não é intrusivo e respeita `prefers-reduced-motion`.
-- [x] Validar desktop, mobile, acessibilidade, TypeScript e build.
-- [x] Guardar e entregar um novo checkpoint.
-
-
-## Fotos do Flat Verano Stay
-
-- [x] Copiar e carregar as 18 fotos fornecidas para o armazenamento permanente do projecto.
-- [x] Preservar exactamente a sequência enviada pelo utilizador.
-- [x] Actualizar apenas a galeria do Flat Verano Stay, sem alterar Copacabana.
-- [x] Rever textos alternativos, poster do tour e comportamento lazy-loading.
-- [x] Validar galeria, lightbox, swipe, zoom, partilha, desktop, mobile e build.
-- [x] Guardar e entregar um novo checkpoint.
-
-
-## Remoção do parágrafo do Hero
-
-- [x] Inspeccionar o parágrafo actual em `Hero.tsx`.
-- [x] Confirmar ou remover manualmente o texto secundário do Hero.
-- [x] Validar composição desktop, mobile, TypeScript e build.
-- [x] Guardar e entregar um novo checkpoint.
-
-
-## Abertura cinematográfica do Hero
-
-- [x] Inspeccionar o carregamento actual do Hero e o layout global.
-- [x] Implementar uma abertura breve com a mesma fotografia de fundo do Hero.
-- [x] Integrar a logo M Apartments e uma transição suave para o conteúdo.
-- [x] Garantir que não bloqueia a navegação e respeita `prefers-reduced-motion`.
-- [x] Validar desktop, mobile, acessibilidade, TypeScript e build.
-- [x] Guardar e entregar um novo checkpoint.
-
-
-## Fotos do Apto Reformado — Copacabana
-
-- [x] Copiar e carregar as 18 fotos fornecidas para o armazenamento permanente do projecto.
-- [x] Preservar exactamente a sequência enviada pelo utilizador.
-- [x] Actualizar apenas a galeria do Apto Reformado, sem alterar o Flat Verano Stay.
-- [x] Actualizar poster, textos alternativos e comportamento lazy-loading.
-- [x] Validar galeria, lightbox, swipe, zoom, partilha, desktop, mobile e build.
-- [x] Guardar e entregar um novo checkpoint.
+### Fase 4: Validação e Lançamento
+- [x] Validar o carregamento dos vídeos no browser.
+- [x] Executar `pnpm run check` e `pnpm run build` na nova estrutura.
+- [ ] Sincronizar com o GitHub (Victorcesarcoe/MCapartments-landing) e criar o checkpoint de publicação.
+- [ ] Confirmar que o site está online com os vídeos a funcionar.

@@ -75,14 +75,14 @@ export default function Hero() {
               onClick={() => scrollTo("verano-stay")}
               className="btn-cta-hover btn-press rounded-full bg-terracotta px-8 py-4 font-semibold text-primary-foreground shadow-[0_10px_30px_-8px_rgba(180,86,47,0.6)] hover:shadow-[0_18px_40px_-8px_rgba(180,86,47,0.75)]"
             >
-              Ver Flat Verano Stay · Barra
+              Flat Verano Stay · Barra Olimpica
             </button>
             <button
               type="button"
               onClick={() => scrollTo("copacabana")}
               className="btn-cta-hover btn-press rounded-full border border-[#1f3328]/60 bg-[#1f3328]/40 px-8 py-4 font-semibold text-paper backdrop-blur-sm hover:bg-[#1f3328]/70 hover:shadow-[0_18px_40px_-8px_rgba(31,51,40,0.65)]"
             >
-              Ver Apto Copacabana · Praia
+              Aparamento Copacabana · Praia
             </button>
           </div>
 
