@@ -25,5 +25,11 @@ O projecto está a ser convertido de um template estático para um template full
 ### Fase 4: Validação e Lançamento
 - [x] Validar o carregamento dos vídeos no browser.
 - [x] Executar `pnpm run check` e `pnpm run build` na nova estrutura.
-- [ ] Sincronizar com o GitHub (Victorcesarcoe/MCapartments-landing) e criar o checkpoint de publicação.
-- [ ] Confirmar que o site está online com os vídeos a funcionar.
+- [x] Sincronizar com o GitHub (Victorcesarcoe/MCapartments-landing) e criar o checkpoint de publicação.
+- [x] Confirmar que o site está online com os vídeos a funcionar.
+
+
+## Correcção de lazy loading em produção
+- [ ] Tornar a activação do `TourVideo` robusta quando a página abre directamente num hash/âncora.
+- [ ] Validar novamente os dois vídeos no domínio publicado depois da correcção.
+- [ ] Guardar checkpoint final após a validação de produção.

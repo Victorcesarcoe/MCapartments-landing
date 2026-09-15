@@ -23,17 +23,42 @@ export default function TourVideo({ videoUrl, posterUrl, alt, accent }: TourVide
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
-    const io = new IntersectionObserver(
+
+    let observer: IntersectionObserver | null = null;
+    let activated = false;
+
+    const activateIfNearViewport = () => {
+      if (activated) return;
+      const rect = el.getBoundingClientRect();
+      const nearViewport = rect.top < window.innerHeight + 200 && rect.bottom > -200;
+      if (!nearViewport) return;
+
+      activated = true;
+      setVisible(true);
+      observer?.disconnect();
+      window.removeEventListener("scroll", activateIfNearViewport);
+      window.removeEventListener("resize", activateIfNearViewport);
+    };
+
+    observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          io.disconnect();
-        }
+        if (entry.isIntersecting) activateIfNearViewport();
       },
       { rootMargin: "200px" }
     );
-    io.observe(el);
-    return () => io.disconnect();
+
+    observer.observe(el);
+    // Hash navigation can move the page after the first observer callback.
+    // Check the rendered position directly and keep a lightweight fallback.
+    activateIfNearViewport();
+    window.addEventListener("scroll", activateIfNearViewport, { passive: true });
+    window.addEventListener("resize", activateIfNearViewport);
+
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener("scroll", activateIfNearViewport);
+      window.removeEventListener("resize", activateIfNearViewport);
+    };
   }, []);
 
   useEffect(() => {
