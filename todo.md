@@ -30,6 +30,6 @@ O projecto está a ser convertido de um template estático para um template full
 
 
 ## Correcção de lazy loading em produção
-- [ ] Tornar a activação do `TourVideo` robusta quando a página abre directamente num hash/âncora.
-- [ ] Validar novamente os dois vídeos no domínio publicado depois da correcção.
-- [ ] Guardar checkpoint final após a validação de produção.
+- [x] Tornar a activação do `TourVideo` robusta quando a página abre directamente num hash/âncora.
+- [x] Validar novamente os dois vídeos no domínio publicado depois da correcção.
+- [x] Guardar checkpoint final após a validação de produção.
